@@ -1,0 +1,16 @@
+version: "2"
+services:
+
+  gitlab:
+    image: 'gitlab/gitlab-ce:latest'
+    network_mode: "bridge"
+    restart: always
+    hostname: 'git.emb-lab.org'
+    container_name: gitlab
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://git.emb-lab.org'
+    volumes:
+      - '/srv/docker/volumes/gitlab/config:/etc/gitlab'
+      - '/srv/docker/volumes/gitlab/logs:/var/log/gitlab'
+      - '/srv/docker/volumes/gitlab/data:/var/opt/gitlab'

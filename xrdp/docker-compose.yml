@@ -1,0 +1,8 @@
+xrdp:
+    build: .
+    container_name: xrdp
+#    restart: always
+#    volumes:
+#        - /var/run/docker.sock:/run/docker.sock
+    ports:
+        - 141.19.87.231:3390:3389/tcp
