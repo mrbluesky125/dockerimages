@@ -1,8 +1,19 @@
-xrdp:
-    build: .
-    container_name: xrdp
-#    restart: always
-#    volumes:
-#        - /var/run/docker.sock:/run/docker.sock
-    ports:
-        - 141.19.87.231:3390:3389/tcp
+version: "2"
+
+volumes:
+  nvidia_driver_367.35:
+      external: true
+
+services:
+    xrdp:
+        build: .
+        container_name: xrdp
+        devices:
+            - /dev/nvidiactl
+            - /dev/nvidia-uvm
+            - /dev/nvidia0
+        volumes:
+            - nvidia_driver_367.35:/usr/local/nvidia:ro
+        ports:
+            - 141.19.87.231:3390:3389/tcp
+
