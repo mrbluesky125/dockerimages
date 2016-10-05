@@ -87,6 +87,7 @@ RUN pip install git+https://github.com/tflearn/tflearn.git && \
 
 # Install dependencies for Caffe
 RUN apt-get update && apt-get install -y \
+		libatlas-base-dev \
 		libboost-all-dev \
 		libgflags-dev \
 		libgoogle-glog-dev \
@@ -108,13 +109,25 @@ RUN apt-get update && \
 
 
 # Install Caffe 
-RUN git clone -b master --depth 1 https://github.com/BVLC/caffe.git /root/caffe && \
-    cd /root/caffe && \
+RUN git clone -b master --depth 1 https://github.com/BVLC/caffe.git /opt/caffe
+
+RUN cd /opt/caffe && \
     cat python/requirements.txt | xargs -n1 pip install && \
     mkdir build && cd build && \
-    cmake -DUSE_CUDNN=1 -DBLAS=Open .. && \
-    make -j"$(nproc)" all && \
-    make install
+    cmake -DUSE_CUDNN=1 ..  && \
+    #-DBLAS=Open -DWITH_PYTHON_LAYER=ON .. && \
+    make -j"$(nproc)" all
+    #make install && \
+    # build pycaffe
+    #make -j"$(nproc)" clean all pycaffe
+
+
+RUN echo 'export PYTHONPATH=/opt/caffe/python:$PYTHONPATH' >> /home/desktop/.bashrc
+
+ENV PATH $/opt/caffe/build/tools:/opt/caffe/python:$PATH
+RUN echo "/opt/caffe/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
+
+
 
 # Install misc
 RUN apt-get update && \

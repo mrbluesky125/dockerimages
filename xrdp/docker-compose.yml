@@ -5,9 +5,9 @@ volumes:
       external: true
 
 services:
-    work:
+    xrdp:
         build: .
-        container_name: work
+        container_name: xrdp
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm

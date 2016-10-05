@@ -1,7 +1,7 @@
 #FROM ubuntu:xenial
 FROM nvidia/cuda:7.5-cudnn5-devel-ubuntu14.04
 
-MAINTAINER Timo Zimmermann <zimmermann.emb@googlemail.com>
+MAINTAINER Hans Meiser <hans@meiser.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
@@ -11,7 +11,6 @@ RUN apt-get update -y && \
     apt-get autoclean && apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
 
-#XRDP Installation
 RUN apt-get update -y && \
     apt-get install -y xrdp xfce4 xfce4-terminal gnome-icon-theme-full tango-icon-theme && \
     apt-get autoclean && apt-get autoremove && \
@@ -22,14 +21,12 @@ RUN apt-get update -y && \
     xrdp-keygen xrdp auto && \
     echo "desktop:desktop" | chpasswd
 
-ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
-	
 RUN echo xfce4-session >~/.xsession
 
-#Tools Installation
 RUN apt-get update -y && \
     apt-get install -y python-pip python-qt4 python-sphinx && \
-    apt-get install -y htop wget nano cmake strace
+    apt-get install -y wget && \
+    apt-get install -y nano
 
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     wget --quiet https://repo.continuum.io/archive/Anaconda2-4.1.1-Linux-x86_64.sh -O ~/anaconda.sh && \
@@ -82,6 +79,7 @@ RUN apt-get update && \
     # imbalanced dataset
     conda install -c glemaitre imbalanced-learn
 
+
     # tflean. Deep learning library featuring a higher-level API for TensorFlow. http://tflearn.org
 RUN pip install git+https://github.com/tflearn/tflearn.git && \
     # clean up pip cache
@@ -89,6 +87,7 @@ RUN pip install git+https://github.com/tflearn/tflearn.git && \
 
 # Install dependencies for Caffe
 RUN apt-get update && apt-get install -y \
+		libatlas-base-dev \
 		libboost-all-dev \
 		libgflags-dev \
 		libgoogle-glog-dev \
@@ -104,16 +103,41 @@ RUN apt-get update && apt-get install -y \
 	apt-get autoremove && \
 	rm -rf /var/lib/apt/lists/*
 
+# install cmake
+RUN apt-get update && \
+    apt-get install -y cmake
+
+
 # Install Caffe 
-RUN git clone -b master --depth 1 https://github.com/BVLC/caffe.git /root/caffe && \
-    cd /root/caffe && \
+RUN git clone -b master --depth 1 https://github.com/BVLC/caffe.git /opt/caffe
+
+RUN cd /opt/caffe && \
     cat python/requirements.txt | xargs -n1 pip install && \
     mkdir build && cd build && \
-    cmake -DUSE_CUDNN=1 -DBLAS=Open .. && \
-    make -j"$(nproc)" all && \
-    make install
+    cmake -DUSE_CUDNN=1 -DOPENCV_VERSION=3 -DWITH_PYTHON_LAYER=ON ..  && \
+    #-DBLAS=Open -DWITH_PYTHON_LAYER=ON .. && \
+    #make -j"$(nproc)" all
+    #make install && \
+    # build pycaffe
+    make -j"$(nproc)" clean all pycaffe
 
-VOLUME ["/home/desktop/persistent"]
+
+RUN echo 'export PYTHONPATH=/opt/caffe/python:$PYTHONPATH' >> /home/desktop/.bashrc
+
+ENV PATH $/opt/caffe/build/tools:/opt/caffe/python:$PATH
+RUN echo "/opt/caffe/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
+
+RUN ln /dev/null /dev/raw1394
+
+
+# Install misc
+RUN apt-get update && \
+    apt-get install -y htop && \
+    apt-get install -y strace
+
+ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
+
+VOLUME ["/home/desktop/Projects"]
 
 EXPOSE 3389
 
