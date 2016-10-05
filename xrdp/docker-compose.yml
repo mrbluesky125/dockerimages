@@ -14,6 +14,7 @@ services:
             - /dev/nvidia0
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
+            - /home/pbialecki/work/Projects:/home/desktop/Projects
         ports:
-            - 141.19.87.231:3390:3389/tcp
+            - 141.19.87.231:3392:3389/tcp
 
