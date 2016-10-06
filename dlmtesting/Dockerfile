@@ -44,14 +44,12 @@ RUN git clone -b master --depth 1 https://github.com/BVLC/caffe.git /opt/caffe &
     make -j"$(nproc)"
 
 ADD Makefile.config /opt/caffe/Makefile.config
-RUN cd /opt/caffe && make -j"$(nproc)"
+RUN cd /opt/caffe && make -j"$(nproc)" && make -j"$(nproc)" pycaffe
 
 ENV PATH /opt/caffe/build/tools:/opt/caffe/python:$PATH
 
 RUN echo "/opt/caffe/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 RUN ln /dev/null /dev/raw1394
-
-VOLUME ["/root/workspace"]
 
 ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
 
@@ -69,6 +67,9 @@ RUN echo 'export PYTHONPATH=/opt/caffe/python:'$PYTHONPATH >> ~/.bashrc
 
 #fix tab completion
 #RUN sed -i '/switch_window_key/d' /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+
+VOLUME ["/root/workspace"]
+VOLUME ["/root/share"]
 
 EXPOSE 3389
 

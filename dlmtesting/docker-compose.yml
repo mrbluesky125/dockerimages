@@ -13,10 +13,9 @@ services:
             - /dev/nvidia-uvm
             - /dev/nvidia-uvm-tools
             - /dev/nvidia0
-            - /dev/nvidia1
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
-#            - ./Projects:/home/desktop/Persistent
+#            - ./dlm:/root/workspace
         ports:
             - 141.19.87.231:3400:3389/tcp
 
