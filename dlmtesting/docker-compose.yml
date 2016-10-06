@@ -1,7 +1,7 @@
 version: "2"
 
 volumes:
-  nvidia_driver_370.28:
+  nvidia_driver_367.35:
       external: true
 
 services:
@@ -15,7 +15,7 @@ services:
             - /dev/nvidia0
             - /dev/nvidia1
         volumes:
-            - nvidia_driver_370.28:/usr/local/nvidia:ro
+            - nvidia_driver_367.35:/usr/local/nvidia:ro
 #            - ./Projects:/home/desktop/Persistent
         ports:
             - 141.19.87.231:3400:3389/tcp

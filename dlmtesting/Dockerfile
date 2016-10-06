@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn5-devel-ubuntu14.04
+FROM nvidia/cuda:7.5-cudnn5-devel-ubuntu14.04
 
 MAINTAINER Timo Zimmermann <zimmermann.emb@googlemail.com>
 
@@ -39,8 +39,8 @@ RUN git clone -b master --depth 1 https://github.com/BVLC/caffe.git /opt/caffe &
     cd /opt/caffe && \
     cat python/requirements.txt | xargs -n1 pip install && \
     mkdir build && cd build && \
-    cmake -DUSE_CUDNN=1 -DCUDA_gpu_detect_output="6.2 6.2" .. && \
-#    cmake -DUSE_CUDNN=1 .. && \
+#    cmake -DUSE_CUDNN=1 -DCUDA_gpu_detect_output="6.2 6.2" .. && \
+    cmake -DUSE_CUDNN=1 .. && \
     make -j"$(nproc)"
 
 ADD Makefile.config /opt/caffe/Makefile.config
