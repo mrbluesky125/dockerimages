@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && \
-    apt-get install -y --force-yes xrdp xvfb xfce4 xfce4-terminal gnome-icon-theme-full tango-icon-theme leafpad && \
+    apt-get install -y --force-yes xrdp xvfb xfce4 xfce4-terminal gnome-icon-theme-full tango-icon-theme leafpad netsurf && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* && \
     sed -i '/TerminalServerUsers/d' /etc/xrdp/sesman.ini && \
     sed -i '/TerminalServerAdmins/d' /etc/xrdp/sesman.ini && \
@@ -24,6 +24,7 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     rm ~/anaconda.sh
 
 ENV PATH /opt/conda/bin:$PATH
+ENV LD_LIBRARY_PATH /opt/conda/lib:$LD_LIBRARY_PATH
 
     # HDF5 support
 RUN conda install h5py && \

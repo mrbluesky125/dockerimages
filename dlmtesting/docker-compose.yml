@@ -8,6 +8,7 @@ services:
     dlmtesting:
         build: .
         image: dlmbaseimage
+        network_mode: "bridge"
         container_name: dlmtesting
         env_file: passwd.env
         environment:
