@@ -39,7 +39,6 @@ RUN git clone -b master --depth 1 https://github.com/BVLC/caffe.git /opt/caffe &
     cd /opt/caffe && \
     cat python/requirements.txt | xargs -n1 pip install && \
     mkdir build && cd build && \
-#    cmake -DUSE_CUDNN=1 -DCUDA_gpu_detect_output="6.2 6.2" .. && \
     cmake -DUSE_CUDNN=1 .. && \
     make -j"$(nproc)"
 
@@ -53,24 +52,16 @@ RUN ln /dev/null /dev/raw1394
 
 ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
 
-#setup root as default user
-RUN echo "root:root" | chpasswd
-RUN sed -i 's/username=ask/username=root/g' /etc/xrdp/xrdp.ini && \
-    sed -i 's/password=ask/password=root/g' /etc/xrdp/xrdp.ini && \
-    sed -i '/\[globals\]/a autorun=sesman-Xvnc' /etc/xrdp/xrdp.ini && \
-    sed -i '/\[globals\]/a hidelogwindow=1' /etc/xrdp/xrdp.ini
-
 #add ENV variables to .bashrc for remote logins
 RUN echo 'export PATH='$PATH >> ~/.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> ~/.bashrc
 RUN echo 'export PYTHONPATH=/opt/caffe/python:'$PYTHONPATH >> ~/.bashrc
-
-#fix tab completion
-#RUN sed -i '/switch_window_key/d' /root/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
 
 VOLUME ["/root/workspace"]
 VOLUME ["/root/share"]
 
 EXPOSE 3389
 
-CMD ["/usr/bin/supervisord", "-n"]
+WORKDIR /root/workspace
+ADD start.sh /usr/local/start.sh
+CMD ["/usr/local/start.sh"]

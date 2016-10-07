@@ -7,15 +7,22 @@ volumes:
 services:
     dlmtesting:
         build: .
+        image: dlmbaseimage
         container_name: dlmtesting
+        env_file: passwd.env
+        environment:
+            - CONTAINER=DLMTESTING
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
             - /dev/nvidia-uvm-tools
             - /dev/nvidia0
+            - /dev/nvidia1
+            - /dev/nvidia2
+            - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
-#            - ./dlm:/root/workspace
+            - /srv/docker/volumes/dlmlabor/dlmtesting:/root/workspace
         ports:
             - 141.19.87.231:3400:3389/tcp
 
