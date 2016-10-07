@@ -8,4 +8,4 @@ dnsdock:
         - /var/run/docker.sock:/run/docker.sock
     ports:
         - 172.17.0.1:53:53/udp
-        - 141.19.87.233:53:53/udp
+#        - 53:53/udp
