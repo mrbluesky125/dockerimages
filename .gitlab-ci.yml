@@ -1,0 +1,7 @@
+build:
+  stage: build
+  tags:
+    - suparmucac1
+  script: 
+    - cd dlmtesting
+    - docker-compose build
