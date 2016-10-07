@@ -1,4 +1,4 @@
-build:
+build:suparmucac1:
   stage: build
   tags:
     - suparmucac1
@@ -6,7 +6,7 @@ build:
     - cd dlmtesting
     - docker-compose build
 
-build:
+build:suparmucac2:
   stage: build
   tags:
     - suparmucac2
@@ -14,7 +14,7 @@ build:
     - cd dlmtesting
     - docker-compose build
     
-build:
+build:suparmucac3:
   stage: build
   tags:
     - suparmucac3
