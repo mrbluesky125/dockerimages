@@ -24,7 +24,6 @@ RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
     rm ~/anaconda.sh
 
 ENV PATH /opt/conda/bin:$PATH
-ENV LD_LIBRARY_PATH /opt/conda/lib:$LD_LIBRARY_PATH
 
     # HDF5 support
 RUN conda install h5py && \
@@ -47,6 +46,7 @@ ADD Makefile.config /opt/caffe/Makefile.config
 RUN cd /opt/caffe && make -j"$(nproc)" && make -j"$(nproc)" pycaffe
 
 ENV PATH /opt/caffe/build/tools:/opt/caffe/python:$PATH
+ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/conda/lib
 
 RUN echo "/opt/caffe/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 RUN ln /dev/null /dev/raw1394
