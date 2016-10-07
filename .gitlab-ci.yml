@@ -1,3 +1,7 @@
+stages:
+  - build
+  - run
+
 build:suparmucac1:
   stage: build
   tags:
@@ -21,3 +25,12 @@ build:suparmucac3:
   script: 
     - cd dlmtesting
     - docker-compose build
+    
+run:suparmucac1:
+  stage: build
+  tags:
+    - suparmucac1
+  script: 
+    - cd dlmlabor
+    - docker-compose down
+    - docker-compose up -d dlm01 dlm02 dlm03 dlm04
