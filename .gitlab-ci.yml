@@ -5,3 +5,19 @@ build:
   script: 
     - cd dlmtesting
     - docker-compose build
+
+build:
+  stage: build
+  tags:
+    - suparmucac2
+  script: 
+    - cd dlmtesting
+    - docker-compose build
+    
+build:
+  stage: build
+  tags:
+    - suparmucac3
+  script: 
+    - cd dlmtesting
+    - docker-compose build
