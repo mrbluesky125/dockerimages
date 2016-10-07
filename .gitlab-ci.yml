@@ -2,7 +2,7 @@ stages:
   - build
   - run
 
-build:suparmucac1:
+build:dlm:suparmucac1:
   stage: build
   tags:
     - suparmucac1
@@ -10,7 +10,7 @@ build:suparmucac1:
     - cd dlmtesting
     - docker-compose build
 
-build:suparmucac2:
+build:dlm:suparmucac2:
   stage: build
   tags:
     - suparmucac2
@@ -18,7 +18,7 @@ build:suparmucac2:
     - cd dlmtesting
     - docker-compose build
     
-build:suparmucac3:
+build:dlm:suparmucac3:
   stage: build
   tags:
     - suparmucac3
@@ -26,11 +26,29 @@ build:suparmucac3:
     - cd dlmtesting
     - docker-compose build
     
-run:suparmucac1:
-  stage: build
+run:dlm:suparmucac1:
+  stage: run
   tags:
     - suparmucac1
   script: 
     - cd dlmlabor
     - docker-compose down
     - docker-compose up -d dlm01 dlm02 dlm03 dlm04
+    
+run:dlm:suparmucac2:
+  stage: run
+  tags:
+    - suparmucac2
+  script: 
+    - cd dlmlabor
+    - docker-compose down
+    - docker-compose up -d dlm05 dlm06 dlm07 dlm08
+
+run:dlm:suparmucac3:
+  stage: run
+  tags:
+    - suparmucac3
+  script: 
+    - cd dlmlabor
+    - docker-compose down
+    - docker-compose up -d dlm09 dlm10 dlm11 dlm12
