@@ -24,6 +24,7 @@ services:
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlmtesting:/root/workspace
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 141.19.87.231:3400:3389/tcp
 

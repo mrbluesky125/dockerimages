@@ -58,8 +58,12 @@ RUN echo 'export PATH='$PATH >> ~/.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> ~/.bashrc
 RUN echo 'export PYTHONPATH=/opt/caffe/python:'$PYTHONPATH >> ~/.bashrc
 
+#pdf reader
+RUN apt-get update && apt-get -y --force-yes install evince && \
+    apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+
 VOLUME ["/root/workspace"]
-VOLUME ["/root/share"]
+VOLUME ["/root/shared"]
 
 EXPOSE 3389
 

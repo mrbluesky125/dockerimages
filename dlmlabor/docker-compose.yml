@@ -18,12 +18,12 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia0
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm01:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3401:3389/tcp
 
@@ -38,12 +38,12 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia1
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm02:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3402:3389/tcp
 
@@ -58,12 +58,12 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia2
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm03:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3403:3389/tcp
 
@@ -78,12 +78,12 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm04:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3404:3389/tcp
 
@@ -99,12 +99,12 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia0
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm05:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3405:3389/tcp
 
@@ -119,7 +119,7 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia1
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -139,12 +139,12 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia2
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm07:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3407:3389/tcp
 
@@ -159,12 +159,12 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm08:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3408:3389/tcp
 
@@ -179,12 +179,12 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia0
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm09:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3409:3389/tcp
 
@@ -199,12 +199,12 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia1
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm10:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3410:3389/tcp
 
@@ -219,12 +219,12 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia2
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm11:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3411:3389/tcp
 
@@ -239,11 +239,11 @@ services:
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-            - /dev/nvidia-uvm-tools
+#            - /dev/nvidia-uvm-tools
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm12:/root/workspace
-            - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 3412:3389/tcp
