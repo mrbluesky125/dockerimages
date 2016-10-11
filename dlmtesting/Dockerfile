@@ -51,16 +51,16 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/conda/lib
 RUN echo "/opt/caffe/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 RUN ln /dev/null /dev/raw1394
 
+#pdf reader
+RUN apt-get update && apt-get -y --force-yes install evince && \
+    apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+
 ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
 
 #add ENV variables to .bashrc for remote logins
 RUN echo 'export PATH='$PATH >> ~/.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> ~/.bashrc
 RUN echo 'export PYTHONPATH=/opt/caffe/python:'$PYTHONPATH >> ~/.bashrc
-
-#pdf reader
-RUN apt-get update && apt-get -y --force-yes install evince && \
-    apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 
 VOLUME ["/root/workspace"]
 VOLUME ["/root/shared"]
