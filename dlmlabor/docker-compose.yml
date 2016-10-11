@@ -15,10 +15,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM01
+        cpuset: 0-7
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia0
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -35,10 +35,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM02
+        cpuset: 8-15
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia1
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -55,10 +55,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM03
+        cpuset: 16-23
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia2
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -75,10 +75,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM04
+        cpuset: 24-31
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -96,10 +96,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM05
+        cpuset: 0-7
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia0
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -116,10 +116,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM06
+        cpuset: 8-15
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia1
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -136,10 +136,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM07
+        cpuset: 16-23
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia2
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -156,10 +156,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM08
+        cpuset: 24-31
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -176,10 +176,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM09
+        cpuset: 0-7
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia0
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -196,10 +196,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM10
+        cpuset: 8-15
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia1
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -216,10 +216,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM11
+        cpuset: 16-23
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia2
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
@@ -236,10 +236,10 @@ services:
         env_file: passwd.env
         environment:
             - CONTAINER=DLM12
+        cpuset: 24-31
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
