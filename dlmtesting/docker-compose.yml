@@ -10,10 +10,12 @@ services:
         image: dlmbaseimage
         network_mode: "bridge"
         container_name: dlmtesting
+        hostname: dlmtesting
         env_file: passwd.env
         environment:
             - CONTAINER=DLMTESTING
         cpuset: 0-16
+        working_dir: /root/workspace
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm

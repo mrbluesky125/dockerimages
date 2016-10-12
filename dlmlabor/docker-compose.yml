@@ -10,6 +10,7 @@ services:
     dlm01:
         image: dlmbaseimage
         container_name: dlm01
+        hostname: dlm01
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
@@ -30,6 +31,7 @@ services:
     dlm02:
         image: dlmbaseimage
         container_name: dlm02
+        hostname: dlm02
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
@@ -50,6 +52,7 @@ services:
     dlm03:
         image: dlmbaseimage
         container_name: dlm03
+        hostname: dlm03
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
@@ -70,6 +73,7 @@ services:
     dlm04:
         image: dlmbaseimage
         container_name: dlm04
+        hostname: dlm04
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
@@ -91,6 +95,7 @@ services:
     dlm05:
         image: dlmbaseimage
         container_name: dlm05
+        hostname: dlm05
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
@@ -111,6 +116,7 @@ services:
     dlm06:
         image: dlmbaseimage
         container_name: dlm06
+        hostname: dlm06
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
@@ -131,6 +137,7 @@ services:
     dlm07:
         image: dlmbaseimage
         container_name: dlm07
+        hostname: dlm07
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
@@ -151,6 +158,7 @@ services:
     dlm08:
         image: dlmbaseimage
         container_name: dlm08
+        hostname: dlm08
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
@@ -172,6 +180,7 @@ services:
     dlm09:
         image: dlmbaseimage
         container_name: dlm09
+        hostname: dlm09
         restart: always
         env_file: passwd.env
         environment:
@@ -191,6 +200,7 @@ services:
     dlm10:
         image: dlmbaseimage
         container_name: dlm10
+        hostname: dlm10
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
@@ -211,6 +221,7 @@ services:
     dlm11:
         image: dlmbaseimage
         container_name: dlm11
+        hostname: dlm11
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
@@ -231,6 +242,7 @@ services:
     dlm12:
         image: dlmbaseimage
         container_name: dlm12
+        hostname: dlm12
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
