@@ -26,7 +26,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm01:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3401:3389/tcp
+            - 141.19.87.231:3401:3389/tcp
 
     dlm02:
         image: dlmbaseimage
@@ -47,7 +47,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm02:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3402:3389/tcp
+            - 141.19.87.231:3402:3389/tcp
 
     dlm03:
         image: dlmbaseimage
@@ -68,7 +68,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm03:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3403:3389/tcp
+            - 141.19.87.231:3403:3389/tcp
 
     dlm04:
         image: dlmbaseimage
@@ -89,7 +89,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm04:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3404:3389/tcp
+            - 141.19.87.231:3404:3389/tcp
 
 #### SUPARMUCAC2
     dlm05:
@@ -111,7 +111,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm05:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3405:3389/tcp
+            - 141.19.87.232:3405:3389/tcp
 
     dlm06:
         image: dlmbaseimage
@@ -132,7 +132,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm06:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
         ports:
-            - 3406:3389/tcp
+            - 141.19.87.232:3406:3389/tcp
 
     dlm07:
         image: dlmbaseimage
@@ -153,7 +153,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm07:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3407:3389/tcp
+            - 141.19.87.232:3407:3389/tcp
 
     dlm08:
         image: dlmbaseimage
@@ -174,7 +174,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm08:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3408:3389/tcp
+            - 141.19.87.232:3408:3389/tcp
 
 #### SUPARMUCAC3
     dlm09:
@@ -195,7 +195,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm09:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3409:3389/tcp
+            - 141.19.87.233:3409:3389/tcp
 
     dlm10:
         image: dlmbaseimage
@@ -216,7 +216,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm10:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3410:3389/tcp
+            - 141.19.87.233:3410:3389/tcp
 
     dlm11:
         image: dlmbaseimage
@@ -237,7 +237,7 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm11:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3411:3389/tcp
+            - 141.19.87.233:3411:3389/tcp
 
     dlm12:
         image: dlmbaseimage
@@ -258,4 +258,4 @@ services:
             - /srv/docker/volumes/dlmlabor/dlm12:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3412:3389/tcp
+            - 141.19.87.233:3412:3389/tcp
