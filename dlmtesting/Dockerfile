@@ -52,7 +52,7 @@ RUN echo "/opt/caffe/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 RUN ln /dev/null /dev/raw1394
 
 #extra stuff
-RUN apt-get update && apt-get -y --force-yes install evince ristretto vlc && \
+RUN apt-get update && apt-get -y --force-yes install evince ristretto vlc firefox && \
     apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
 RUN mkdir /root/Desktop && cp /opt/conda/share/applications/spyder.desktop /root/Desktop/
 
