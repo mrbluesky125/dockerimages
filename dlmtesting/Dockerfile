@@ -59,9 +59,9 @@ RUN mkdir /root/Desktop && cp /opt/conda/share/applications/spyder.desktop /root
 ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
 
 #add ENV variables to .bashrc for remote logins
-RUN echo 'export PATH='$PATH >> ~/.bashrc
-RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> ~/.bashrc
-RUN echo 'export PYTHONPATH=/opt/caffe/python:'$PYTHONPATH >> ~/.bashrc
+RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
+RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
+RUN echo 'export PYTHONPATH=/opt/caffe/python:'$PYTHONPATH\ >> /etc/bash.bashrc
 
 VOLUME ["/root/workspace"]
 VOLUME ["/root/shared"]

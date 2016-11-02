@@ -31,4 +31,3 @@ services:
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 141.19.87.231:3400:3389/tcp
-
