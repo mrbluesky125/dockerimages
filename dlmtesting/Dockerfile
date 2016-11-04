@@ -58,6 +58,9 @@ RUN mkdir /root/Desktop && cp /opt/conda/share/applications/spyder.desktop /root
 
 ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
 
+#Download mnist dataset
+RUN cd /opt/caffe && ./data/mnist/get_mnist.sh && ./examples/mnist/create_mnist.sh
+
 #add ENV variables to .bashrc for remote logins
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
