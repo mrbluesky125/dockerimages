@@ -31,3 +31,30 @@ services:
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
             - 141.19.87.231:3400:3389/tcp
+
+    dlmtesting2:
+        build: .
+        image: dlmbaseimage
+        network_mode: "bridge"
+        container_name: dlmtesting2
+        hostname: dlmtesting
+        env_file: passwd.env
+        environment:
+            - CONTAINER=DLMTESTING
+        cpuset: 0-16
+        working_dir: /root/workspace
+        devices:
+            - /dev/nvidiactl
+            - /dev/nvidia-uvm
+            - /dev/nvidia-uvm-tools
+            - /dev/nvidia0
+            - /dev/nvidia1
+            - /dev/nvidia2
+            - /dev/nvidia3
+        volumes:
+            - nvidia_driver_367.35:/usr/local/nvidia:ro
+            - /srv/docker/volumes/dlmlabor/dlmtesting:/root/workspace
+            - /srv/docker/volumes/dlmlabor/vorlesung:/root/vorlesung
+            - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
+        ports:
+            - 141.19.87.231:3399:3389/tcp
