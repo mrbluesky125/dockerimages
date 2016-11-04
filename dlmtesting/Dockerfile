@@ -51,16 +51,17 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:/opt/conda/lib
 RUN echo "/opt/caffe/build/lib" >> /etc/ld.so.conf.d/caffe.conf && ldconfig
 RUN ln /dev/null /dev/raw1394
 
+#extra stuff
+RUN apt-get update && apt-get -y --force-yes install evince ristretto vlc firefox && \
+    apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+RUN mkdir /root/Desktop && cp /opt/conda/share/applications/spyder.desktop /root/Desktop/
+
 ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
 
 #add ENV variables to .bashrc for remote logins
-RUN echo 'export PATH='$PATH >> ~/.bashrc
-RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> ~/.bashrc
-RUN echo 'export PYTHONPATH=/opt/caffe/python:'$PYTHONPATH >> ~/.bashrc
-
-#pdf reader
-RUN apt-get update && apt-get -y --force-yes install evince && \
-    apt-get clean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
+RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
+RUN echo 'export PYTHONPATH=/opt/caffe/python:'$PYTHONPATH\ >> /etc/bash.bashrc
 
 VOLUME ["/root/workspace"]
 VOLUME ["/root/shared"]
@@ -69,4 +70,6 @@ EXPOSE 3389
 
 WORKDIR /root/workspace
 ADD start.sh /usr/local/start.sh
+ADD xrdp.ini /etc/xrdp/xrdp.ini
+
 CMD ["/usr/local/start.sh"]

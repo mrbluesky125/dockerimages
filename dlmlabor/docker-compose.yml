@@ -10,240 +10,252 @@ services:
     dlm01:
         image: dlmbaseimage
         container_name: dlm01
+        hostname: dlm01
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM01
+        cpuset: 0-7
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia0
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm01:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3401:3389/tcp
+            - 141.19.87.231:3401:3389/tcp
 
     dlm02:
         image: dlmbaseimage
         container_name: dlm02
+        hostname: dlm02
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM02
+        cpuset: 8-15
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia1
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm02:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3402:3389/tcp
+            - 141.19.87.231:3402:3389/tcp
 
     dlm03:
         image: dlmbaseimage
         container_name: dlm03
+        hostname: dlm03
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM03
+        cpuset: 16-23
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia2
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm03:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3403:3389/tcp
+            - 141.19.87.231:3403:3389/tcp
 
     dlm04:
         image: dlmbaseimage
         container_name: dlm04
+        hostname: dlm04
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM04
+        cpuset: 24-31
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm04:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3404:3389/tcp
+            - 141.19.87.231:3404:3389/tcp
 
 #### SUPARMUCAC2
     dlm05:
         image: dlmbaseimage
         container_name: dlm05
+        hostname: dlm05
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM05
+        cpuset: 0-7
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia0
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm05:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3405:3389/tcp
+            - 141.19.87.232:3405:3389/tcp
 
     dlm06:
         image: dlmbaseimage
         container_name: dlm06
+        hostname: dlm06
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM06
+        cpuset: 8-15
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia1
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm06:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/share:ro
         ports:
-            - 3406:3389/tcp
+            - 141.19.87.232:3406:3389/tcp
 
     dlm07:
         image: dlmbaseimage
         container_name: dlm07
+        hostname: dlm07
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM07
+        cpuset: 16-23
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia2
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm07:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3407:3389/tcp
+            - 141.19.87.232:3407:3389/tcp
 
     dlm08:
         image: dlmbaseimage
         container_name: dlm08
+        hostname: dlm08
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM08
+        cpuset: 24-31
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm08:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3408:3389/tcp
+            - 141.19.87.232:3408:3389/tcp
 
 #### SUPARMUCAC3
     dlm09:
         image: dlmbaseimage
         container_name: dlm09
+        hostname: dlm09
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM09
+        cpuset: 0-7
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia0
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm09:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3409:3389/tcp
+            - 141.19.87.233:3409:3389/tcp
 
     dlm10:
         image: dlmbaseimage
         container_name: dlm10
+        hostname: dlm10
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM10
+        cpuset: 8-15
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia1
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm10:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3410:3389/tcp
+            - 141.19.87.233:3410:3389/tcp
 
     dlm11:
         image: dlmbaseimage
         container_name: dlm11
+        hostname: dlm11
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM11
+        cpuset: 16-23
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia2
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm11:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3411:3389/tcp
+            - 141.19.87.233:3411:3389/tcp
 
     dlm12:
         image: dlmbaseimage
         container_name: dlm12
+        hostname: dlm12
         network_mode: "bridge"
         restart: always
         env_file: passwd.env
         environment:
             - CONTAINER=DLM12
+        cpuset: 24-31
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
-#            - /dev/nvidia-uvm-tools
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
             - /srv/docker/volumes/dlmlabor/dlm12:/root/workspace
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
-            - 3412:3389/tcp
+            - 141.19.87.233:3412:3389/tcp
