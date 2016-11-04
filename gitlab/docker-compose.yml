@@ -20,3 +20,4 @@ services:
       - '/srv/docker/volumes/gitlab/logs:/var/log/gitlab'
       - '/srv/docker/volumes/gitlab/data:/var/opt/gitlab'
       - '/srv/backups/gitlab:/srv/backup'
+      - '/srv/lfs-storage:/srv/lfs-storage'
