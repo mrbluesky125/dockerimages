@@ -26,7 +26,7 @@ services:
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
-            - /srv/docker/volumes/dlmlabor/dlmtesting:/root/workspace
+            - /srv/docker/volumes/dlmlabor/workspaces/dlmtesting:/root/workspace
             - /srv/docker/volumes/dlmlabor/vorlesung:/root/vorlesung
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
@@ -53,7 +53,7 @@ services:
             - /dev/nvidia3
         volumes:
             - nvidia_driver_367.35:/usr/local/nvidia:ro
-            - /srv/docker/volumes/dlmlabor/dlmtesting:/root/workspace
+            - /srv/docker/volumes/dlmlabor/workspaces/dlmtesting:/root/workspace
             - /srv/docker/volumes/dlmlabor/vorlesung:/root/vorlesung
             - /srv/docker/volumes/dlmlabor/shared:/root/shared:ro
         ports:
