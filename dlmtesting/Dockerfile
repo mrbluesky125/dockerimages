@@ -68,6 +68,7 @@ RUN echo 'export PYTHONPATH=/opt/caffe/python:'$PYTHONPATH\ >> /etc/bash.bashrc
 
 VOLUME ["/root/workspace"]
 VOLUME ["/root/shared"]
+VOLUME ["/root/vorlesung"]
 
 EXPOSE 3389
 
