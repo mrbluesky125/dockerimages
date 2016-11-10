@@ -72,7 +72,7 @@ VOLUME ["/root/vorlesung"]
 
 EXPOSE 3389
 
-WORKDIR /root/workspace
+WORKDIR /root
 ADD start.sh /usr/local/start.sh
 ADD xrdp.ini /etc/xrdp/xrdp.ini
 

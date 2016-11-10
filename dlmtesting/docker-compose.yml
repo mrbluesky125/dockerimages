@@ -15,7 +15,7 @@ services:
         environment:
             - CONTAINER=DLMTESTING
         cpuset: 0-16
-        working_dir: /root/workspace
+        working_dir: /root
         devices:
             - /dev/nvidiactl
             - /dev/nvidia-uvm
