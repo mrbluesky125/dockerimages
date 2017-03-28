@@ -1,5 +1,4 @@
 version: "2"
-volumes:
 services:
     qtwebgl_psiegel:
         build: .
