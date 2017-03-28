@@ -18,14 +18,16 @@ RUN apt-get update && \
     
 RUN echo xfce4-session >~/.xsession
 
-RUN  apt-get build-dep qt5-default && \
-     apt-get install libxcb-xinerama0-dev && \
-     apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev && \
-     apt-get install flex bison gperf libicu-dev libxslt-dev ruby && \
-     apt-get install libssl-dev libxcursor-dev libxcomposite-dev libxdamage-dev libxrandr-dev libdbus-1-dev libfontconfig1-dev libcap-dev libxtst-dev libpulse-dev libudev-dev libpci-dev libnss3-dev libasound2-dev libxss-dev libegl1-mesa-dev gperf bison && \
-     apt-get install libasound2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev && \
+RUN apt-get update && \
+    apt-get build-dep qt5-default && \
+    apt-get install libxcb-xinerama0-dev && \
+    apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev && \
+    apt-get install flex bison gperf libicu-dev libxslt-dev ruby && \
+    apt-get install libssl-dev libxcursor-dev libxcomposite-dev libxdamage-dev libxrandr-dev libdbus-1-dev libfontconfig1-dev libcap-dev libxtst-dev libpulse-dev libudev-dev libpci-dev libnss3-dev libasound2-dev libxss-dev libegl1-mesa-dev gperf bison && \
+    apt-get install libasound2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev && \
      
-RUN git clone https://code.qt.io/qt/qt5.git && \
+RUN apt-get update && \
+    git clone https://code.qt.io/qt/qt5.git && \
     cd qt5 && \
     git checkout 5.9 && \
     ./init-repository && \
