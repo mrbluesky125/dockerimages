@@ -19,7 +19,6 @@ RUN apt-get update && \
 RUN echo xfce4-session >~/.xsession
 
 RUN apt-get update && \
-    apt-get build-dep qt5-default && \
     apt-get install -y libxcb-xinerama0-dev && \
     apt-get install -y '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev && \
     apt-get install -y flex bison gperf libicu-dev libxslt-dev ruby && \
