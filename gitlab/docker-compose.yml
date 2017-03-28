@@ -14,7 +14,6 @@ services:
     ports:
       - 2222:22/tcp
       - 80:80/tcp
-      - 443:443/tcp
     volumes:
       - '/srv/docker/volumes/gitlab/config:/etc/gitlab'
       - '/srv/docker/volumes/gitlab/logs:/var/log/gitlab'
