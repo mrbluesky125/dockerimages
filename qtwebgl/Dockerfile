@@ -44,6 +44,6 @@ WORKDIR /root
 
 ADD xrdp.ini /etc/xrdp/xrdp.ini
 
-RUN sudo service ssh start
+RUN service ssh start
     
 
