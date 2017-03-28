@@ -11,9 +11,6 @@ services:
             - CONTAINER=QTWEBGL
         cpuset: 0-16
         working_dir: /root
-        devices:
-        volumes:
-
         ports:
             - ${QTWEBGL_PORT}:3389/tcp
             - 8888:8888/tcp
