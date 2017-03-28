@@ -1,0 +1,20 @@
+stages:
+  - build
+  - run
+variables:
+  QTWEBGL_NAME: "psiegel"
+  QTWEBGL_PORT: "3507"
+build:qtwebgl:
+  stage: build
+  tags:
+    - suparmucac2
+  script: 
+    - cd qtwebgl
+    - docker-compose build
+run:qtwebgl:
+  stage: run
+  tags:
+    - suparmucac2
+  script: 
+    - cd qtwebgl
+    - docker-compose up -d --force-recreate deeplearning_$QTWEBGL_NAME
