@@ -33,4 +33,16 @@ RUN git clone https://code.qt.io/qt/qt5.git && \
     make -j32 && \
     make install -j32 
     
+RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
+RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
+    
+    
+EXPOSE 3389
+EXPOSE 22
+WORKDIR /root
+
+ADD xrdp.ini /etc/xrdp/xrdp.ini
+
+RUN sudo service ssh start
+    
 
