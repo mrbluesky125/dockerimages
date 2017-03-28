@@ -1,0 +1,22 @@
+version: "2"
+volumes:
+      external: true
+services:
+    qtwebgl_psiegel:
+        build: .
+        image: qtwebgl_${QTWEBGL_NAME}_image
+        network_mode: "bridge"
+        container_name: qtwebgl_${QTWEBGL_NAME}
+        env_file: passwd.env
+        restart: always
+        environment:
+            - CONTAINER=QTWEBGL
+        cpuset: 0-16
+        working_dir: /root
+        devices:
+        volumes:
+
+        ports:
+            - ${QTWEBGL_PORT}:3389/tcp
+            - 8888:8888/tcp
+            - 8889:22/tcp
