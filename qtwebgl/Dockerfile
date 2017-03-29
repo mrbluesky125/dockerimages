@@ -34,6 +34,8 @@ RUN apt-get update && \
     make -j32 && \
     make install -j32 
     
+ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
+    
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
     
@@ -44,6 +46,6 @@ WORKDIR /root
 
 ADD xrdp.ini /etc/xrdp/xrdp.ini
 
-RUN service ssh start
+CMD ["/usr/local/start.sh"]
     
 
