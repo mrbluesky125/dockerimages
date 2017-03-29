@@ -34,7 +34,7 @@ RUN apt-get update && \
     make -j32 && \
     make install -j32 
     
-RUN cp -r qtwebglplugin /qt5/
+ADD qtwebglplugin /qt5/qtwebglplugin
     
 ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
 
