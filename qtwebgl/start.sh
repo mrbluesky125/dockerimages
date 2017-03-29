@@ -23,12 +23,12 @@ sed -i '/switch_window_key/d' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-ke
 #echo '/opt/conda/bin/spyder --new-instance' >> /root/spyderlauncher.sh
 #chmod +x /root/spyderlauncher.sh
 
-create desktop shortcut
-mkdir /root/Desktop && cp /opt/conda/share/applications/spyder.desktop /root/Desktop/
-sed -i '/Exec=spyder/d' /root/Desktop/spyder.desktop
-echo "Exec=/root/spyderlauncher.sh" >> /root/Desktop/spyder.desktop
-echo "Icon=/opt/conda/share/pixmaps/spyder.png" >> /root/Desktop/spyder.desktop
-chmod +x /root/Desktop/spyder.desktop
+#create desktop shortcut
+#mkdir /root/Desktop && cp /opt/conda/share/applications/spyder.desktop /root/Desktop/
+#sed -i '/Exec=spyder/d' /root/Desktop/spyder.desktop
+#echo "Exec=/root/spyderlauncher.sh" >> /root/Desktop/spyder.desktop
+#echo "Icon=/opt/conda/share/pixmaps/spyder.png" >> /root/Desktop/spyder.desktop
+#chmod +x /root/Desktop/spyder.desktop
 
 remove screensaver daemon
 rm /etc/xdg/autostart/xscreensaver.desktop
