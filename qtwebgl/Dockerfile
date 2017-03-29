@@ -35,6 +35,8 @@ RUN apt-get update && \
     make install -j32 
     
 ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
+ADD start.sh /usr/local/start.sh
+ADD xrdp.ini /etc/xrdp/xrdp.ini
     
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
