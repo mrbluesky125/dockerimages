@@ -48,7 +48,7 @@ RUN cd /qt5/qtwebglplugin && \
     /usr/local/Qt-5.9.0/bin/syncqt.pl -version 5.9 && \
     /usr/local/Qt-5.9.0/bin/qmake && \
     make -j32 && \
-    cp /plugins/platforms/libqwebgl.so /usr/local/Qt-5.9.0/plugins/platforms/libqwebgl.so
+    cp plugins/platforms/libqwebgl.so /usr/local/Qt-5.9.0/plugins/platforms/libqwebgl.so
     
     
 EXPOSE 3389
