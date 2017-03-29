@@ -25,7 +25,7 @@ RUN apt-get update && \
     apt-get install -y flex bison gperf libicu-dev libxslt-dev ruby && \
     apt-get install -y libssl-dev libxcursor-dev libxcomposite-dev libxdamage-dev libxrandr-dev libdbus-1-dev libfontconfig1-dev libcap-dev libxtst-dev libpulse-dev libudev-dev libpci-dev libnss3-dev libasound2-dev libxss-dev libegl1-mesa-dev gperf bison && \
     apt-get install -y libasound2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev && \
-    apt-get install locate
+    apt-get install -y locate
     
      
 RUN apt-get update && \
