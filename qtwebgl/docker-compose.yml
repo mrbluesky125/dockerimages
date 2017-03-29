@@ -12,5 +12,5 @@ services:
         cpuset: 0-16
         working_dir: /root
         ports:
-            #- ${QTWEBGL_PORT}:3389/tcp
+            - ${QTWEBGL_PORT}:3389/tcp
             - ${QTWEBGL_PORT}:22/tcp
