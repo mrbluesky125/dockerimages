@@ -5,7 +5,9 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && \
     apt-get upgrade -y --force-yes && \
     apt-get install -y supervisor wget nano htop cmake git strace openssh-server&& \
-    apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+    apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* && \
+    apt-get install locate
+    
     
 RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
