@@ -35,13 +35,19 @@ RUN apt-get update && \
     make install -j32 
     
 ADD qtwebglplugin /qt5/qtwebglplugin
-    
+
 ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
 
     
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
+RUN echo 'export PATH=/usr/local/Qt-5.9.0/bin/qmake'$PATH
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH=/usr/local/Qt-5.9.0/lib:'$LD_LIBRARY_PATH
+
+RUN cd /qt5/qtwebglplugin && \
+    qmake && \
+    make -j32 && \
+    cp /plugins/platforms/libqwebgl.so /usr/local/Qt-5.9.0/plugins/platforms/libqwebgl.so
     
     
 EXPOSE 3389
