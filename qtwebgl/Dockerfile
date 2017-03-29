@@ -39,6 +39,7 @@ ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
     
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
+RUN echo 'export LD_LIBRARY_PATH=/usr/local/Qt-5.9.0/lib:'$LD_LIBRARY_PATH
     
     
 EXPOSE 3389
