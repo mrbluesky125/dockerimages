@@ -35,7 +35,6 @@ RUN apt-get update && \
     make install -j32 
     
 ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
-ADD start.sh /usr/local/start.sh
 
     
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
@@ -46,6 +45,7 @@ EXPOSE 3389
 EXPOSE 22
 WORKDIR /root
 
+ADD start.sh /usr/local/start.sh
 ADD xrdp.ini /etc/xrdp/xrdp.ini
 
 CMD ["/usr/local/start.sh"]
