@@ -47,6 +47,7 @@ WORKDIR /root
 
 ADD start.sh /usr/local/start.sh
 ADD xrdp.ini /etc/xrdp/xrdp.ini
+USER root
 
 CMD ["/usr/local/start.sh"]
     
