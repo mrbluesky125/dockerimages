@@ -13,4 +13,4 @@ services:
         working_dir: /root
         ports:
             - ${QTWEBGL_PORT}:3389/tcp
-            - ${QTWEBGL_PORT}:22/tcp
+            - 8898:22/tcp
