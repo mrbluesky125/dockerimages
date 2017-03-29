@@ -49,6 +49,8 @@ ADD start.sh /usr/local/start.sh
 ADD xrdp.ini /etc/xrdp/xrdp.ini
 USER root
 
+RUN chmod 777 /usr/local/start.sh
+
 CMD ["/usr/local/start.sh"]
     
 
