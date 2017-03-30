@@ -44,14 +44,16 @@ ADD xrdp.conf /etc/supervisor/conf.d/xrdp.conf
     
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export PATH=/usr/local/Qt-5.9.0/bin'$PATH
-RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH=/usr/local/Qt-5.9.0/lib:'$LD_LIBRARY_PATH
+RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
+
 
 RUN cd /qt5/qtwebglplugin && \
     /usr/local/Qt-5.9.0/bin/syncqt.pl -version 5.9 && \
     /usr/local/Qt-5.9.0/bin/qmake && \
     make -j32 && \
-    cp plugins/platforms/libqwebgl.so /usr/local/Qt-5.9.0/plugins/platforms/libqwebgl.so
+    cp plugins/platforms/libqwebgl.so /usr/local/Qt-5.9.0/plugins/platforms/libqwebgl.so && \
+    updatedb
     
     
 EXPOSE 3389
