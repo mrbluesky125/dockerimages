@@ -14,3 +14,4 @@ services:
         ports:
             - ${QTWEBGL_PORT}:3389/tcp
             - 8898:22/tcp
+            - 8899:8080/tcp
