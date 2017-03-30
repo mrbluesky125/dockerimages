@@ -54,9 +54,12 @@ RUN cd /qt5/qtwebglplugin && \
     cp plugins/platforms/libqwebgl.so /usr/local/Qt-5.9.0/plugins/platforms/libqwebgl.so && \
     updatedb
     
-    
+#XRDP    
 EXPOSE 3389
+#SSH
 EXPOSE 22
+# For Qt WebGL
+EXPOSE 8080
 WORKDIR /root
 
 ADD start.sh /usr/local/start.sh
