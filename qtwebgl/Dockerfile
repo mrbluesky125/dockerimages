@@ -60,6 +60,8 @@ EXPOSE 3389
 EXPOSE 22
 # For Qt WebGL
 EXPOSE 8080
+EXPOSE 30000-40000
+
 WORKDIR /root
 
 ADD start.sh /usr/local/start.sh
