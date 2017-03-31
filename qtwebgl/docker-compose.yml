@@ -11,6 +11,11 @@ services:
             - CONTAINER=QTWEBGL
         cpuset: 0-16
         working_dir: /root
+        devices:
+            - /dev/dri
+        volumes:
+            - /tmp/.X11-unix:/tmp/.X11-unix
+            - /dev/shm:/dev/shm
         ports:
             - ${QTWEBGL_PORT}:3389/tcp
             - 8898:22/tcp
