@@ -3,7 +3,6 @@ services:
     qtwebgl_psiegel:
         build: .
         image: qtwebgl_${QTWEBGL_NAME}_image
-        network_mode: "bridge"
         container_name: qtwebgl_${QTWEBGL_NAME}
         env_file: passwd.env
         restart: always
