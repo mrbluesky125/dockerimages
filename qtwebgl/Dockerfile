@@ -61,6 +61,9 @@ EXPOSE 3389
 EXPOSE 22
 # For Qt WebGL
 EXPOSE 8080
+# QWebSocketServer port
+EXPOSE 33333
+
 
 WORKDIR /root
 
