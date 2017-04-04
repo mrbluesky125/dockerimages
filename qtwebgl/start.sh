@@ -33,7 +33,7 @@ sed -i '/switch_window_key/d' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-ke
 remove screensaver daemon
 rm /etc/xdg/autostart/xscreensaver.desktop
 
-exec /qt5/qtwebglplugin/examples/clocks/clocks --platform webgl
+exec sh /qt5/qtwebglplugin/examples/clocks/clocks --platform webgl
 
 exec /usr/bin/supervisord -n
 
