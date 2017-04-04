@@ -48,7 +48,7 @@ RUN echo 'export LD_LIBRARY_PATH=/usr/local/Qt-5.9.0/lib:'$LD_LIBRARY_PATH >> /e
 
 
 RUN cd /qt5/qtwebglplugin && \
-    sed -ie 's/bool ok = m_server->listen(QHostAddress::Any);/bool ok = m_server->listen(QHostAddress::Any, 33333);/g;' ./src/platforms/webgl/qwebglwebsocketserver.cpp && \
+    sed -ie 's/bool ok = m_server->listen(QHostAddress::Any);/bool ok = m_server->listen(QHostAddress::Any, 33333);/g;' /qt/qtwebglplugin/src/plugins/platforms/webgl/qwebglwebsocketserver.cpp && \
     /usr/local/Qt-5.9.0/bin/syncqt.pl -version 5.9 && \
     /usr/local/Qt-5.9.0/bin/qmake && \
     make -j32 && \
