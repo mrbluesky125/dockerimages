@@ -34,3 +34,5 @@ remove screensaver daemon
 rm /etc/xdg/autostart/xscreensaver.desktop
 
 exec /usr/bin/supervisord -n
+
+exec /qt5/qtwebglplugin/examples/clocks/clocks --platform webgl
