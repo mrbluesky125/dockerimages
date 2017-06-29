@@ -2,7 +2,7 @@ stages:
   - build
   - run
 variables:
-  QTWEBGL_NAME: "psiegel"
+  QTWEBGL_NAME: "qtwebgl"
   QTWEBGL_PORT: "3507"
 build:qtwebgl:
   stage: build
