@@ -17,4 +17,4 @@ run:qtwebgl:
     - suparmucac2
   script: 
     - cd qtwebgl
-    - docker-compose up -d --force-recreate deeplearning_$QTWEBGL_NAME
+    - docker-compose up -d --force-recreate qtwebgl_$QTWEBGL_NAME
