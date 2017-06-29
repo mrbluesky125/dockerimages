@@ -1,6 +1,6 @@
 version: "2"
 services:
-    deeplearning_siegel:
+    deeplearning_psiegel:
         build: .
         image: deeplearning_${QTWEBGL_NAME}_image
         container_name: deeplearning_${QTWEBGL_NAME}
