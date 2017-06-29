@@ -1,20 +1,23 @@
 stages:
   - build
   - run
+
 variables:
-  QTWEBGL_NAME: "psiegel"
-  QTWEBGL_PORT: "3507"
-build:qtwebgl:
+  CONTAINER_NAME: "qtbase"
+  CONTAINER_PORT: "3507"
+
+build:
   stage: build
   tags:
     - suparmucac2
   script: 
-    - cd qtwebgl
+    - cd $CONTAINER_NAME
     - docker-compose build
-run:qtwebgl:
-  stage: run
-  tags:
-    - suparmucac2
-  script: 
-    - cd qtwebgl
-    - docker-compose up -d --force-recreate qtwebgl_$QTWEBGL_NAME
+    
+#run:
+#  stage: run
+#  tags:
+#    - suparmucac2
+#  script: 
+#    - cd qtwebgl
+#    - docker-compose up -d --force-recreate
