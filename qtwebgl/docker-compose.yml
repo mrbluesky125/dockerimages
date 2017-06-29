@@ -1,9 +1,9 @@
 version: "2"
 services:
-    deeplearning_psiegel:
+    qtwebgl_psiegel:
         build: .
-        image: deeplearning_${QTWEBGL_NAME}_image
-        container_name: deeplearning_${QTWEBGL_NAME}
+        image: qtwebgl_${QTWEBGL_NAME}_image
+        container_name: qtwebgl_${QTWEBGL_NAME}
         env_file: passwd.env
         restart: always
         environment:
