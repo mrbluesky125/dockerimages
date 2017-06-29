@@ -23,7 +23,7 @@ RUN git clone https://code.qt.io/qt/qt5.git && \
     cd qt5 && git checkout 5.9 && ./init-repository && \
     ./configure -opensource -confirm-license
     
-RUN make -j32 && \
+RUN cd qt5 && make -j32 && \
     make install -j32 
    
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
