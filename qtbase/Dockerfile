@@ -16,16 +16,19 @@ RUN apt-get update && \
     apt-get install -y libssl-dev libxcursor-dev libxcomposite-dev libxdamage-dev libxrandr-dev libdbus-1-dev libfontconfig1-dev libcap-dev libxtst-dev libpulse-dev libudev-dev libpci-dev libnss3-dev libasound2-dev libxss-dev libegl1-mesa-dev gperf bison && \
     apt-get install -y libasound2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev && \
     apt-get install -y locate && \
-	apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
+    apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
     
      
 RUN git clone https://code.qt.io/qt/qt5.git && \
     cd qt5 && git checkout 5.9 && ./init-repository && \
-    ./configure -opensource -confirm-license
+    ./configure -opensource -confirm-license -nomake examples -nomake tests
     
 RUN cd qt5 && make -j32 && \
     make install -j32 
    
+ENV PATH /usr/local/Qt-5.9.0/bin:$PATH
+ENV LD_LIBRARY_PATH /usr/local/Qt-5.9.0/lib:$LD_LIBRARY_PATH
+
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export PATH=/usr/local/Qt-5.9.0/bin'$PATH
 RUN echo 'export LD_LIBRARY_PATH=/usr/local/Qt-5.9.0/lib:'$LD_LIBRARY_PATH >> /etc/bash.bashrc
