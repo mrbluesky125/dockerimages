@@ -21,7 +21,8 @@ EXPOSE 8080
 # QWebSocketServer port
 EXPOSE 33334
 
-WORKDIR /root
-USER root
+ADD start.sh /usr/local/start.sh
+RUN chmod 777 /usr/local/start.sh
 
-CMD ["/bin/bash", "/usr/bin/supervisord", "-n"]
+CMD ["/usr/local/start.sh"]
+
