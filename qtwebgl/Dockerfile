@@ -8,10 +8,10 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
     
 RUN cd /qt5/qtwebglplugin && \
     sed -ie 's/bool ok = m_server->listen(QHostAddress::Any);/bool ok = m_server->listen(QHostAddress::Any, 33334);/g;' /qt5/qtwebglplugin/src/plugins/platforms/webgl/qwebglwebsocketserver.cpp && \
-    /usr/local/Qt-5.9.0/bin/syncqt.pl -version 5.9 && \
-    /usr/local/Qt-5.9.0/bin/qmake && \
+    /usr/local/Qt-5.9.1/bin/syncqt.pl -version 5.9 && \
+    /usr/local/Qt-5.9.1/bin/qmake && \
     make -j32 && \
-    cp plugins/platforms/libqwebgl.so /usr/local/Qt-5.9.0/plugins/platforms/libqwebgl.so && \
+    cp plugins/platforms/libqwebgl.so /usr/local/Qt-5.9.1/plugins/platforms/libqwebgl.so && \
     updatedb
     
 #SSH
