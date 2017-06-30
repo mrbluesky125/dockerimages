@@ -26,11 +26,10 @@ RUN git clone https://code.qt.io/qt/qt5.git && \
 RUN cd qt5 && make -j32 && \
     make install -j32 
    
-ENV PATH /usr/local/Qt-5.9.0/bin:$PATH
-ENV LD_LIBRARY_PATH /usr/local/Qt-5.9.0/lib:$LD_LIBRARY_PATH
+ENV PATH /usr/local/Qt-5.9.1/bin:$PATH
+ENV LD_LIBRARY_PATH /usr/local/Qt-5.9.1/lib:$LD_LIBRARY_PATH
 
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
-RUN echo 'export PATH=/usr/local/Qt-5.9.0/bin'$PATH
-RUN echo 'export LD_LIBRARY_PATH=/usr/local/Qt-5.9.0/lib:'$LD_LIBRARY_PATH >> /etc/bash.bashrc
+RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
 
 WORKDIR /root
