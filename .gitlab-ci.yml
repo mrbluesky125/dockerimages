@@ -1,23 +1,28 @@
 stages:
+  - build_base
   - build
   - run
 
-variables:
-  CONTAINER_NAME: "qtbase"
-  CONTAINER_PORT: "3507"
-
-build:
+build_base:qtbase:
   stage: build
   tags:
     - suparmucac2
   script: 
-    - cd $CONTAINER_NAME
+    - cd qtbase
+    - docker-compose build
+
+build:qtbase:
+  stage: build
+  tags:
+    - suparmucac2
+  script: 
+    - cd qtwebgl
     - docker-compose build
     
-#run:
-#  stage: run
-#  tags:
-#    - suparmucac2
-#  script: 
-#    - cd qtwebgl
-#    - docker-compose up -d --force-recreate
+run:
+  stage: run
+  tags:
+    - suparmucac2
+  script: 
+    - cd qtwebgl
+    - docker-compose up -d --force-recreate

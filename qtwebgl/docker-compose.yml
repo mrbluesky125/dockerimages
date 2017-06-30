@@ -1,0 +1,9 @@
+version: "2"
+services:
+    qtwebgl:
+        build: .
+        image: qtwebgl_image
+        container_name: qtwebgl
+        cpuset: 0-16
+        working_dir: /root
+

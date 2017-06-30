@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>webgl/index.html</file>
+        <file>webgl/webqt.js</file>
+        <file>webgl/favicon.ico</file>
+    </qresource>
+</RCC>
