@@ -11,7 +11,7 @@ build_base:qtbase:
     - cd qtbase
     - docker-compose build
 
-build:qtbase:
+build:qtwebgl:
   stage: build
   tags:
     - suparmucac2
