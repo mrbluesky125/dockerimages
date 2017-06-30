@@ -4,15 +4,14 @@ ENV DEBIAN_FRONTEND noninteractive
   
 ADD qtwebglplugin /qt5/qtwebglplugin
 
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-    
 RUN cd /qt5/qtwebglplugin && \
     sed -ie 's/bool ok = m_server->listen(QHostAddress::Any);/bool ok = m_server->listen(QHostAddress::Any, 33334);/g;' /qt5/qtwebglplugin/src/plugins/platforms/webgl/qwebglwebsocketserver.cpp && \
-    /usr/local/Qt-5.9.1/bin/syncqt.pl -version 5.9 && \
-    /usr/local/Qt-5.9.1/bin/qmake && \
+    syncqt.pl -version 5.9 && qmake && \
     make -j32 && \
     cp plugins/platforms/libqwebgl.so /usr/local/Qt-5.9.1/plugins/platforms/libqwebgl.so && \
     updatedb
+
+ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
     
 #SSH
 EXPOSE 22
@@ -23,10 +22,6 @@ EXPOSE 8080
 EXPOSE 33334
 
 WORKDIR /root
-
-ADD start.sh /usr/local/start.sh
-RUN chmod 777 /usr/local/start.sh
-
 USER root
 
-CMD ["/usr/local/start.sh"]
+CMD ["/bin/bash", "supervisord", "-n"]
