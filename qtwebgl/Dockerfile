@@ -24,4 +24,4 @@ EXPOSE 33334
 WORKDIR /root
 USER root
 
-CMD ["/bin/bash", "supervisord", "-n"]
+CMD ["/bin/bash", "/usr/bin/supervisord", "-n"]
