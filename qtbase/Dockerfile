@@ -25,6 +25,8 @@ RUN git clone https://code.qt.io/qt/qt5.git && \
     
 RUN cd qt5 && make -j32 && \
     make install -j32 
+    
+RUN cd qt5 && git submodule foreach --recursive "git clean -dfx" && git clean -dfx
    
 ENV PATH /usr/local/Qt-5.9.1/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/Qt-5.9.1/lib:$LD_LIBRARY_PATH
