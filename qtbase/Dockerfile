@@ -19,10 +19,9 @@ RUN apt-get update && \
 
 RUN git clone https://code.qt.io/qt/qt5.git && \
     cd qt5 && git checkout $QT_VERSION && ./init-repository && \
-    ./configure -opensource -confirm-license -nomake examples -nomake tests
-    
-RUN cd qt5 && make -j32 && \
-    make install -j32 
+    ./configure -opensource -confirm-license -nomake examples -nomake tests && \
+    make -j32 && make install -j32 && \
+    git submodule foreach --recursive "git clean -dfx" && git clean -dfx
     
 ENV PATH /usr/local/Qt-$QT_VERSION/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/Qt-$QT_VERSION/lib:$LD_LIBRARY_PATH

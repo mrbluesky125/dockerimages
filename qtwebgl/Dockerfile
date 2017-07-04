@@ -1,26 +1,15 @@
 FROM qtbase_image
-
-ENV DEBIAN_FRONTEND noninteractive
+  
+ENV APP_PORT 33334
   
 RUN cd /qt5 && git clone http://code.qt.io/qt/qtwebglplugin.git && cd /qt5/qtwebglplugin && \
-    sed -ie 's/bool ok = m_server->listen(QHostAddress::Any);/bool ok = m_server->listen(QHostAddress::Any, 33334);/g;' /qt5/qtwebglplugin/src/plugins/platforms/webgl/qwebglwebsocketserver.cpp && \
-    syncqt.pl -version $QT_VERSION && qmake && \
-    make -j32 && \
-    cp plugins/platforms/libqwebgl.so /usr/local/Qt-$QT_VERSION/plugins/platforms/libqwebgl.so && \
+    sed -ie 's/bool ok = m_server->listen(QHostAddress::Any);/bool ok = m_server->listen(QHostAddress::Any, $APP_PORT);/g;' /qt5/qtwebglplugin/src/plugins/platforms/webgl/qwebglwebsocketserver.cpp && \
+    sed -ie 's/requires(!winrt:qtHaveModule(websockets):qtHaveModule(gui):qtConfig(opengles2));requires(!winrt:qtHaveModule(websockets):qtHaveModule(gui))/g' /qt5/qtwebglplugin/qtwebglplugin.pro && \
+    syncqt.pl -version $QT_VERSION && qmake && make -j32 && make install \
+#    cp plugins/platforms/libqwebgl.so /usr/local/Qt-$QT_VERSION/plugins/platforms/libqwebgl.so && \
     updatedb
-
-ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-    
-#SSH
-EXPOSE 22
 
 # For Qt WebGL
 EXPOSE 8080
 # QWebSocketServer port
 EXPOSE 33334
-
-ADD start.sh /usr/local/start.sh
-RUN chmod 777 /usr/local/start.sh
-
-CMD ["/usr/local/start.sh"]
-

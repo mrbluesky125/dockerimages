@@ -3,7 +3,15 @@ stages:
   - build
   - run
 
-build_base:qtbase:
+build_base:suparmucac1:qtbase:
+  stage: build_base
+  tags:
+    - suparmucac1
+  script: 
+    - cd qtbase
+    - docker build --tag qtbase_image .
+  
+build_base:suparmucac2:qtbase:
   stage: build_base
   tags:
     - suparmucac2
@@ -11,11 +19,19 @@ build_base:qtbase:
     - cd qtbase
     - docker build --tag qtbase_image .
 
+build_base:suparmucac3:qtbase:
+  stage: build_base
+  tags:
+    - suparmucac3
+  script: 
+    - cd qtbase
+    - docker build --tag qtbase_image .
+    
 build:qtwebgl:
   stage: build
   tags:
     - suparmucac2
   script: 
     - cd qtwebgl
-    - docker-compose build
+    - docker build --tag qtwebgl_image .
     
