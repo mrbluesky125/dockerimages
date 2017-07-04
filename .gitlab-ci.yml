@@ -26,8 +26,16 @@ build_base:suparmucac3:qtbase:
   script: 
     - cd qtbase
     - docker build --tag qtbase_image .
+
+build:suparmucac1:qtwebgl:
+  stage: build
+  tags:
+    - suparmucac1
+  script: 
+    - cd qtwebgl
+    - docker build --tag qtwebgl_image .
     
-build:qtwebgl:
+build:suparmucac2:qtwebgl:
   stage: build
   tags:
     - suparmucac2
@@ -35,3 +43,10 @@ build:qtwebgl:
     - cd qtwebgl
     - docker build --tag qtwebgl_image .
     
+build:suparmucac3:qtwebgl:
+  stage: build
+  tags:
+    - suparmucac3
+  script: 
+    - cd qtwebgl
+    - docker build --tag qtwebgl_image .
