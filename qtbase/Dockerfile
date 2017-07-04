@@ -1,6 +1,7 @@
 FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV QT_VERSION 5.9.1
 
 RUN apt-get update && \
     apt-get upgrade -y --force-yes && \
@@ -20,13 +21,12 @@ RUN apt-get update && \
     
      
 RUN git clone https://code.qt.io/qt/qt5.git && \
-    cd qt5 && git checkout 5.9 && ./init-repository && \
+    cd qt5 && git checkout $QT_VERSION && ./init-repository && \
     ./configure -opensource -confirm-license -nomake examples -nomake tests
     
 RUN cd qt5 && make -j32 && \
     make install -j32 
     
-ENV QT_VERSION 5.9.1
 ENV PATH /usr/local/Qt-$QT_VERSION/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/Qt-$QT_VERSION/lib:$LD_LIBRARY_PATH
 
