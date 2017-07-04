@@ -2,13 +2,11 @@ FROM qtbase_image
 
 ENV DEBIAN_FRONTEND noninteractive
   
-ADD qtwebglplugin /qt5/qtwebglplugin
-
-RUN cd /qt5/qtwebglplugin && \
+RUN cd /qt5 && git clone http://code.qt.io/qt/qtwebglplugin.git \
     sed -ie 's/bool ok = m_server->listen(QHostAddress::Any);/bool ok = m_server->listen(QHostAddress::Any, 33334);/g;' /qt5/qtwebglplugin/src/plugins/platforms/webgl/qwebglwebsocketserver.cpp && \
-    syncqt.pl -version 5.9 && qmake && \
+    syncqt.pl -version $QT_VERSION && qmake && \
     make -j32 && \
-    cp plugins/platforms/libqwebgl.so /usr/local/Qt-5.9.1/plugins/platforms/libqwebgl.so && \
+    cp plugins/platforms/libqwebgl.so /usr/local/Qt-$QT_VERSION/plugins/platforms/libqwebgl.so && \
     updatedb
 
 ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
