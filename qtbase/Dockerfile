@@ -5,11 +5,9 @@ ENV QT_VERSION 5.9.1
 
 RUN apt-get update && \
     apt-get upgrade -y --force-yes && \
-    apt-get install -y supervisor wget nano htop cmake git strace openssh-server && \
+    apt-get install -y git && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
    
-RUN sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-
 RUN apt-get update && \
     apt-get install -y libxcb-xinerama0-dev && \
     apt-get install -y '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev && \
@@ -18,8 +16,7 @@ RUN apt-get update && \
     apt-get install -y libasound2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev && \
     apt-get install -y locate && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
-    
-     
+
 RUN git clone https://code.qt.io/qt/qt5.git && \
     cd qt5 && git checkout $QT_VERSION && ./init-repository && \
     ./configure -opensource -confirm-license -nomake examples -nomake tests
