@@ -9,7 +9,7 @@ build_base:qtbase:
     - suparmucac2
   script: 
     - cd qtbase
-    - docker-compose build
+    - docker build --tag qtbase_image .
 
 build:qtwebgl:
   stage: build
@@ -19,10 +19,3 @@ build:qtwebgl:
     - cd qtwebgl
     - docker-compose build
     
-run:
-  stage: run
-  tags:
-    - suparmucac2
-  script: 
-    - cd qtwebgl
-    - docker-compose up -d --force-recreate
