@@ -4,7 +4,7 @@ stages:
   - run
 
 build_base:qtbase:
-  stage: build
+  stage: build_base
   tags:
     - suparmucac2
   script: 
