@@ -10,7 +10,6 @@ RUN apt-get update && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* && \
     sed -i '/TerminalServerUsers/d' /etc/xrdp/sesman.ini && \
     sed -i '/TerminalServerAdmins/d' /etc/xrdp/sesman.ini && \
-    sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
     sed -i 's/KillDisconnected=0/KillDisconnected=1/g' /etc/xrdp/sesman.ini && \
     sed -i 's/DisconnectedTimeLimit=0/DisconnectedTimeLimit=10/g' /etc/xrdp/sesman.ini && \
     sed -i '/switch_window_key/d' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml && \
@@ -23,9 +22,10 @@ RUN echo xfce4-session >~/.xsession
 RUN apt-get update && \
     apt-get upgrade -y --force-yes && \
     apt-get install -y supervisor wget nano htop cmake git strace openssh-server && \
-    apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+    apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* && \
+    sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+    mkdir /var/run/sshd
 
-RUN mkdir /var/run/sshd
 ADD xrdp.ini /etc/xrdp/xrdp.ini
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 	
