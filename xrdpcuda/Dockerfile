@@ -43,6 +43,6 @@ EXPOSE 22
 WORKDIR /root
 
 ADD start.sh /usr/local/start.sh
-RUN chmod 777 /usr/local/start.sh
+RUN chmod 777 /usr/local/start.sh && chmod +x /usr/local/start.sh
 
 CMD ["/usr/local/start.sh"]
