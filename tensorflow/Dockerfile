@@ -4,10 +4,11 @@ MAINTAINER Timo Zimmermann <zimmermann.emb@googlemail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-#Remote desktop XRDP
+#Python + Tensorflow
 RUN apt-get update && \
-    apt-get install -y python && \
-    apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/*
+    apt-get install -y python-pip python-dev && \
+    apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* && \
+    pip install tensorflow-gpu
 
 #add ENV variables to .bashrc for remote logins
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
