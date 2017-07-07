@@ -3,6 +3,8 @@ stages:
   - build
   - run
 
+################################## Qt5 Base ###################################
+
 build_base:suparmucac1:qtbase:
   stage: build_base
   tags:
@@ -26,6 +28,34 @@ build_base:suparmucac3:qtbase:
   script: 
     - cd qtbase
     - docker build --tag qtbase_image .
+
+################################## Cuda XRDP ###################################
+
+build_base:suparmucac1:xrdpcuda:
+  stage: build_base
+  tags:
+    - suparmucac1
+  script: 
+    - cd xrdpcuda
+    - docker build --tag xrdpcuda_image .
+
+build_base:suparmucac2:xrdpcuda:
+  stage: build_base
+  tags:
+    - suparmucac2
+  script: 
+    - cd xrdpcuda
+    - docker build --tag xrdpcuda_image .
+    
+build_base:suparmucac3:xrdpcuda:
+  stage: build_base
+  tags:
+    - suparmucac3
+  script: 
+    - cd xrdpcuda
+    - docker build --tag xrdpcuda_image .
+
+################################## WebGL ######################################
 
 build:suparmucac1:qtwebgl:
   stage: build
