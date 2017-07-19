@@ -2,6 +2,8 @@ FROM qtbase_image
 
 #Default port  
 ENV WEBGL_PORT 8081
+
+RUN echo $PATH 
   
 RUN cd /qt5 && git clone http://code.qt.io/qt/qtwebglplugin.git && cd /qt5/qtwebglplugin && \
     sed -ie 's/bool ok = d->server->listen(QHostAddress::Any);/bool ok = d->server->listen(QHostAddress::Any, qgetenv("WEBGL_PORT").toInt());/g' /qt5/qtwebglplugin/src/plugins/platforms/webgl/qwebglwebsocketserver.cpp && \
