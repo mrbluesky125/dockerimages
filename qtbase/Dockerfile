@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV QT_VERSION 5.9
+ENV QT_VERSION 5.9.2
 
 RUN apt-get update && \
     apt-get upgrade -y --force-yes && \
@@ -19,7 +19,7 @@ RUN apt-get update && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
 
 RUN git clone https://code.qt.io/qt/qt5.git && \
-    cd qt5 && git checkout $QT_VERSION && ./init-repository && \
+    cd qt5 && git checkout -b $QT_VERSION v$QT_VERSION && ./init-repository && \
     ./configure -opensource -confirm-license -nomake examples -nomake tests && \
     make -j32 -s && make install -j32 && \
     git submodule foreach --recursive "git clean -dfx" && git clean -dfx
