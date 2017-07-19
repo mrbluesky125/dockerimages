@@ -1,7 +1,7 @@
 FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV QT_VERSION 5.9.2
+ENV QT_VERSION 5.9.1
 
 RUN apt-get update && \
     apt-get upgrade -y --force-yes && \
