@@ -18,13 +18,25 @@ RUN pip install --upgrade pip  && \
     pip install tensorflow-gpu && \
     pip install keras
 
-RUN mkdir /root/Desktop && cp /opt/conda/share/applications/spyder3.desktop /root/Desktop/
-
 #add ENV variables to .bashrc for remote logins
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
 RUN echo 'export PYTHONPATH='$PYTHONPATH\ >> /etc/bash.bashrc
 RUN echo 'export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb' >> /etc/bash.bashrc
+
+#create shortcut
+RUN touch /root/spyderlauncher.sh && \
+    echo 'export PATH='$PATH >> /root/spyderlauncher.sh && \
+    echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /root/spyderlauncher.sh && \
+    echo 'export PYTHONPATH=/opt/caffe/python:' >> /root/spyderlauncher.sh && \
+    echo 'export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb' >> /root/spyderlauncher.sh && \
+    echo '/opt/conda/bin/spyder --new-instance' >> /root/spyderlauncher.sh && \
+    chmod +x /root/spyderlauncher.sh && \
+    mkdir /root/Desktop && cp /opt/conda/share/applications/spyder3.desktop /root/Desktop/  && \
+    sed -i '/Exec=spyder3/d' /root/Desktop/spyder.desktop  && \
+    echo "Exec=/root/spyderlauncher.sh" >> /root/Desktop/spyder.desktop  && \
+    echo "Icon=/opt/conda/share/pixmaps/spyder.png" >> /root/Desktop/spyder.desktop  && \
+    chmod +x /root/Desktop/spyder.desktop
 
 VOLUME ["/root/workspace"]
 
