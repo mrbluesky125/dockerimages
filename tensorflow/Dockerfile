@@ -35,7 +35,7 @@ RUN touch /root/spyderlauncher.sh && \
     mkdir /root/Desktop && cp /opt/conda/share/applications/spyder3.desktop /root/Desktop/spyder.desktop  && \
     sed -i '/Exec=spyder3/d' /root/Desktop/spyder.desktop  && \
     echo "Exec=/root/spyderlauncher.sh" >> /root/Desktop/spyder.desktop  && \
-    echo "Icon=/opt/conda/share/pixmaps/spyder.png" >> /root/Desktop/spyder.desktop  && \
+    echo "Icon=/opt/conda/share/pixmaps/spyder3.png" >> /root/Desktop/spyder.desktop  && \
     chmod +x /root/Desktop/spyder.desktop
 
 VOLUME ["/root/workspace"]
