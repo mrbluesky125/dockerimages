@@ -42,6 +42,7 @@ RUN touch /root/spyderlauncher.sh && \
 VOLUME ["/root/workspace"]
 
 EXPOSE 3389
+EXPOSE 6006
 EXPOSE 22
 
 WORKDIR /root
