@@ -15,12 +15,13 @@ RUN apt-get update && \
     apt-get install -y libssl-dev libxcursor-dev libxcomposite-dev libxdamage-dev libxrandr-dev libdbus-1-dev libfontconfig1-dev libcap-dev libxtst-dev libpulse-dev libudev-dev libpci-dev libnss3-dev libasound2-dev libxss-dev libegl1-mesa-dev gperf bison && \
     apt-get install -y libasound2-dev libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev && \
     apt-get install -y locate && \
+    apt-get install -y libpq-dev postgresql && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
 
 RUN git clone https://code.qt.io/qt/qt5.git && \
-    cd qt5 && git checkout $QT_VERSION && ./init-repository && \
+    cd qt5 && git checkout tags/v$QT_VERSION && ./init-repository && \
     ./configure -opensource -confirm-license -nomake examples -nomake tests && \
-    make -j32 && make install -j32 && \
+    make -j32 -s && make install -j32 && \
     git submodule foreach --recursive "git clean -dfx" && git clean -dfx
     
 ENV PATH /usr/local/Qt-$QT_VERSION/bin:$PATH
