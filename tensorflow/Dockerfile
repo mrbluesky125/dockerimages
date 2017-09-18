@@ -18,7 +18,7 @@ RUN pip install --upgrade pip  && \
     pip install tensorflow-gpu && \
     pip install keras
 
-RUN mkdir /root/Desktop && cp /opt/conda/share/applications/spyder.desktop /root/Desktop/
+RUN mkdir /root/Desktop && cp /opt/conda/share/applications/spyder3.desktop /root/Desktop/
 
 #add ENV variables to .bashrc for remote logins
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
