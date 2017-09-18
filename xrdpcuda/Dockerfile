@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 #Remote desktop XRDP
 RUN apt-get update && \
-    apt-get install -y --force-yes xrdp xvfb xfce4 xfce4-terminal gnome-icon-theme-full tango-icon-theme leafpad evince ristretto vlc firefox && \
+    apt-get install -y --force-yes xrdp xvfb xfce4 xfce4-terminal gnome-icon-theme-full tango-icon-theme leafpad evince ristretto vlc chromium-browser && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* && \
     sed -i '/TerminalServerUsers/d' /etc/xrdp/sesman.ini && \
     sed -i '/TerminalServerAdmins/d' /etc/xrdp/sesman.ini && \
@@ -14,6 +14,7 @@ RUN apt-get update && \
     sed -i 's/DisconnectedTimeLimit=0/DisconnectedTimeLimit=10/g' /etc/xrdp/sesman.ini && \
     sed -i '/switch_window_key/d' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml && \
     rm /etc/xdg/autostart/xscreensaver.desktop && \
+	cp /usr/share/applications/chromium-browser.desktop /root/Desktop/ && \
     xrdp-keygen xrdp auto
 
 RUN echo xfce4-session >~/.xsession
@@ -28,7 +29,6 @@ RUN apt-get update && \
 
 ADD xrdp.ini /etc/xrdp/xrdp.ini
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
-	
 
 #add ENV variables to .bashrc for remote logins
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
