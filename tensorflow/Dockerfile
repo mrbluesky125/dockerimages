@@ -24,6 +24,7 @@ RUN mkdir /root/Desktop && cp /opt/conda/share/applications/spyder.desktop /root
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
 RUN echo 'export PYTHONPATH='$PYTHONPATH\ >> /etc/bash.bashrc
+RUN echo 'export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb' >> /etc/bash.bashrc
 
 VOLUME ["/root/workspace"]
 
