@@ -14,6 +14,7 @@ RUN apt-get update && \
     sed -i 's/DisconnectedTimeLimit=0/DisconnectedTimeLimit=10/g' /etc/xrdp/sesman.ini && \
     sed -i '/switch_window_key/d' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml && \
     rm /etc/xdg/autostart/xscreensaver.desktop && \
+    mkdir /root/Desktop/ && \
 	cp /usr/share/applications/chromium-browser.desktop /root/Desktop/ && \
     xrdp-keygen xrdp auto
 
