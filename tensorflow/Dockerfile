@@ -42,6 +42,7 @@ RUN touch /root/spyderlauncher.sh && \
 RUN sed -i '/Exec=chromium-browser/s/$/ --no-sandbox/' /root/Desktop/chromium-browser.desktop && \
     chmod +x /root/Desktop/chromium-browser.desktop
 
+ADD evdev /usr/share/X11/xkb/keycodes/evdev
 
 VOLUME ["/root/workspace"]
 
