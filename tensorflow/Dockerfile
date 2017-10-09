@@ -32,7 +32,7 @@ RUN touch /root/spyderlauncher.sh && \
     echo 'export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb' >> /root/spyderlauncher.sh && \
     echo '/opt/conda/bin/spyder --new-instance' >> /root/spyderlauncher.sh && \
     chmod +x /root/spyderlauncher.sh && \
-    mkdir /root/Desktop && cp /opt/conda/share/applications/spyder3.desktop /root/Desktop/spyder.desktop  && \
+    cp /opt/conda/share/applications/spyder3.desktop /root/Desktop/spyder.desktop  && \
     sed -i '/Exec=spyder3/d' /root/Desktop/spyder.desktop  && \
     echo "Exec=/root/spyderlauncher.sh" >> /root/Desktop/spyder.desktop  && \
     echo "Icon=/opt/conda/share/pixmaps/spyder3.png" >> /root/Desktop/spyder.desktop  && \
