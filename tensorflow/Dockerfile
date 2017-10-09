@@ -22,7 +22,7 @@ RUN pip install --upgrade pip  && \
 RUN sed -i '/export /d' /etc/bash.bashrc
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
-RUN echo 'export PYTHONPATH='$PYTHONPATH\ >> /etc/bash.bashrc
+RUN echo 'export PYTHONPATH='$PYTHONPATH >> /etc/bash.bashrc
 RUN echo 'export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb' >> /etc/bash.bashrc
 
 #create shortcut
