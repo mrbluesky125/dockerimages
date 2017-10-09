@@ -30,7 +30,7 @@ RUN apt-get update && \
 
 ADD xrdp.ini /etc/xrdp/xrdp.ini
 ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
-ADD km-0409.ini /etc/xrdp/km-0409.ini
+ADD km-0409.ini /etc/xrdp/km-0407.ini
 
 #add ENV variables to .bashrc for remote logins
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
