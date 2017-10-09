@@ -37,6 +37,11 @@ RUN touch /root/spyderlauncher.sh && \
     echo "Exec=/root/spyderlauncher.sh" >> /root/Desktop/spyder.desktop  && \
     echo "Icon=/opt/conda/share/pixmaps/spyder3.png" >> /root/Desktop/spyder.desktop  && \
     chmod +x /root/Desktop/spyder.desktop
+    
+#make chromium shortcut working
+RUN sed -i '/Exec=chromium-browser/s/$/ --no-sandbox/' /root/Desktop/chromium-browser.desktop && \
+    chmod +x /root/Desktop/chromium-browser.desktop
+
 
 VOLUME ["/root/workspace"]
 
