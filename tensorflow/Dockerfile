@@ -29,7 +29,6 @@ RUN echo 'export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb' >> /etc/bash.bashrc
 RUN touch /root/spyderlauncher.sh && \
     echo 'export PATH='$PATH >> /root/spyderlauncher.sh && \
     echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /root/spyderlauncher.sh && \
-    echo 'export PYTHONPATH=/opt/caffe/python:' >> /root/spyderlauncher.sh && \
     echo 'export QT_XKB_CONFIG_ROOT=/usr/share/X11/xkb' >> /root/spyderlauncher.sh && \
     echo '/opt/conda/bin/spyder --new-instance' >> /root/spyderlauncher.sh && \
     chmod +x /root/spyderlauncher.sh && \
