@@ -29,6 +29,14 @@ build_base:suparmucac3:qtbase:
     - cd qtbase
     - docker build --tag qtbase_image .
 
+build_base:testserver:qtbase:
+  stage: build_base
+  tags:
+    - testserver
+  script: 
+    - cd qtbase
+    - docker build --tag qtbase_image .
+
 ################################## Cuda XRDP ###################################
 
 build_base:suparmucac1:xrdpcuda:
@@ -77,6 +85,14 @@ build:suparmucac3:qtwebgl:
   stage: build
   tags:
     - suparmucac3
+  script: 
+    - cd qtwebgl
+    - docker build --tag qtwebgl_image .
+
+build:testserver:qtwebgl:
+  stage: build
+  tags:
+    - testserver
   script: 
     - cd qtwebgl
     - docker build --tag qtwebgl_image .
