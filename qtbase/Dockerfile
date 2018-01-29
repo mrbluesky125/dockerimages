@@ -4,7 +4,6 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV QT_VERSION_TAG 5.10.0
 
 RUN apt-get update && apt-get upgrade -y --force-yes && \
-    apt-get build-dep qt5-default && \
     apt-get install -y build-essential git python perl && \
     apt-get install -y '^libxcb.*-dev' libxcb-xinerama0-dev libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev && \
     apt-get install -y flex bison gperf libicu-dev libxslt-dev ruby && \
