@@ -15,8 +15,11 @@ RUN apt-get update && apt-get upgrade -y --force-yes && \
 
 RUN git clone https://code.qt.io/qt/qt5.git && \
     cd qt5 && git checkout tags/v$QT_VERSION
+
+WORKDIR /root
     
-RUN cd qt5 && ./init-repository && ./configure -opensource -confirm-license -nomake examples -nomake tests && \
+RUN cd qt5 && ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine && \
+    ./configure -opensource -confirm-license -nomake examples -nomake tests && \
     make -j32 && make install && \
     git submodule foreach --recursive "git clean -dfx" && git clean -dfx
     
