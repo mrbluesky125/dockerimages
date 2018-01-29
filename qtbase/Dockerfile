@@ -1,7 +1,7 @@
 FROM ubuntu:17.10
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV QT_VERSION 5.10.0
+ENV QT_VERSION_TAG 5.10.0
 
 RUN apt-get update && apt-get upgrade -y --force-yes && \
     apt-get install -y libxcb-xinerama0-dev build-essential git python perl && \
@@ -13,18 +13,18 @@ RUN apt-get update && apt-get upgrade -y --force-yes && \
     apt-get install -y libpq-dev libprotobuf-dev postgresql && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
 
-RUN git clone https://code.qt.io/qt/qt5.git && \
-    cd qt5 && git checkout tags/v$QT_VERSION
+RUN cd opt && git clone https://code.qt.io/qt/qt5.git && \
+    cd qt5 && git checkout tags/v$QT_VERSION_TAG
 
-RUN cd qt5 && ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine && \
+RUN cd opt/qt5 && ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine && \
     ./configure -opensource -confirm-license -nomake examples -nomake tests && \
     make -j16 -s && make install && \
     git submodule foreach --recursive "git clean -dfx" && git clean -dfx
     
-ENV PATH /usr/local/Qt-$QT_VERSION/bin:$PATH
-ENV LD_LIBRARY_PATH /usr/local/Qt-$QT_VERSION/lib:$LD_LIBRARY_PATH
+ENV PATH /usr/local/Qt-$QT_VERSION_TAG/bin:$PATH
+ENV LD_LIBRARY_PATH /usr/local/Qt-$QT_VERSION_TAG/lib:$LD_LIBRARY_PATH
 
-RUN echo 'export QT_VERSION='QT_VERSION >> /etc/bash.bashrc
+RUN echo 'export QT_VERSION='QT_VERSION_TAG >> /etc/bash.bashrc
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
 
