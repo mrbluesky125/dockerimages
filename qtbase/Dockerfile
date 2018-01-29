@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV QT_VERSION_TAG 5.10.0
 
 RUN apt-get update && apt-get upgrade -y --force-yes && \
-    apt-get install -y libxcb-xinerama0-dev build-essential git python perl && \
+    apt-get install -y libxcb-xinerama0-dev git python perl && \
     apt-get install -y '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev && \
     apt-get install -y flex bison gperf libicu-dev libxslt-dev ruby && \
     apt-get install -y libssl-dev libxcursor-dev libxcomposite-dev libxdamage-dev libxrandr-dev libdbus-1-dev libfontconfig1-dev libcap-dev libxtst-dev libpulse-dev libudev-dev libpci-dev libnss3-dev libasound2-dev libxss-dev libegl1-mesa-dev gperf bison && \
@@ -14,10 +14,9 @@ RUN apt-get update && apt-get upgrade -y --force-yes && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
 
 RUN cd opt && git clone https://code.qt.io/qt/qt5.git && \
-    cd qt5 && git checkout tags/v$QT_VERSION_TAG
-
-RUN cd opt/qt5 && ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine && \
-    ./configure -opensource -confirm-license -nomake examples -nomake tests && \
+    cd qt5 && git checkout tags/v$QT_VERSION_TAG && \ 
+    ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine && \
+    ./configure -opensource -confirm-license -nomake examples -nomake tests --silent && \
     make -j16 -s && make install && \
     git submodule foreach --recursive "git clean -dfx" && git clean -dfx
     
