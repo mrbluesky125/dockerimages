@@ -18,7 +18,7 @@ RUN git clone https://code.qt.io/qt/qt5.git && \
 
 RUN cd qt5 && ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine && \
     ./configure -opensource -confirm-license -nomake examples -nomake tests && \
-    make -j32 && make install && \
+    make -j16 -s && make install && \
     git submodule foreach --recursive "git clean -dfx" && git clean -dfx
     
 ENV PATH /usr/local/Qt-$QT_VERSION/bin:$PATH
