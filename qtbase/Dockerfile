@@ -17,9 +17,11 @@ RUN cd opt && git clone https://code.qt.io/qt/qt5.git && \
     cd qt5 && git checkout tags/v$QT_VERSION_TAG && \ 
     ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine && \
     ./configure -opensource -confirm-license -nomake examples -nomake tests --silent && \
+    sed -ie 's/if (d->server->listen(QHostAddress::Any)) {/if (d->server->listen(QHostAddress::Any, qgetenv("WEBGL_PORT").toInt())) {/g' /opt/qt5/qtwebglplugin/src/plugins/platforms/webgl/qwebglwebsocketserver.cpp && \
     make -j$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu) && make install && \
     git submodule foreach --recursive "git clean -dfx" && git clean -dfx
     
+ENV WEBGL_PORT 8081
 ENV PATH /usr/local/Qt-$QT_VERSION_TAG/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/Qt-$QT_VERSION_TAG/lib:$LD_LIBRARY_PATH
 
