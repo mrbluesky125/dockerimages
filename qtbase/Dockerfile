@@ -13,11 +13,13 @@ RUN apt-get update && apt-get upgrade -y --force-yes && \
     apt-get install -y libpq-dev libprotobuf-dev postgresql && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
 
+ENV CORES $(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu)
+
 RUN cd opt && git clone https://code.qt.io/qt/qt5.git && \
     cd qt5 && git checkout tags/v$QT_VERSION_TAG && \ 
     ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine && \
     ./configure -opensource -confirm-license -nomake examples -nomake tests --silent && \
-    make -j16 -s && make install && \
+    make -j$CORES -s && make install && \
     git submodule foreach --recursive "git clean -dfx" && git clean -dfx
     
 ENV PATH /usr/local/Qt-$QT_VERSION_TAG/bin:$PATH
