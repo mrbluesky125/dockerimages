@@ -3,7 +3,7 @@ FROM mrbluesky125/qtbase
 ENV DEBIAN_FRONTEND noninteractive
 ENV QT_VERSION_TAG 5.10.0
 
-RUN cd opt/qt5 && ./configure -opensource -confirm-license -nomake examples -nomake tests --silent && \
+RUN cd /opt/qt5 && ./configure -opensource -confirm-license -nomake examples -nomake tests --silent && \
     sed -ie 's/bool ok = d->server->listen(QHostAddress::Any);/bool ok = d->server->listen(QHostAddress::Any, qgetenv("WEBGL_PORT").toInt());/g' /opt/qt5/qtwebglplugin/src/plugins/platforms/webgl/qwebglwebsocketserver.cpp && \
     sed -ie 's/if (d->server->listen(QHostAddress::Any)) {/if (d->server->listen(QHostAddress::Any, qgetenv("WEBGL_PORT").toInt())) {/g' /opt/qt5/qtwebglplugin/src/plugins/platforms/webgl/qwebglwebsocketserver.cpp && \
     make -j$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu) && make install && \
