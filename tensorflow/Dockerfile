@@ -1,4 +1,4 @@
-FROM xrdpcuda_image
+FROM mrbluesky125/xrdp
 
 MAINTAINER Timo Zimmermann <zimmermann.emb@googlemail.com>
 
