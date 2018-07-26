@@ -1,7 +1,7 @@
 FROM mrbluesky125/qtbase
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV QT_VERSION_TAG 5.10.0
+ENV QT_VERSION_TAG 5.11.0
 
 RUN cd /opt/qt5 && make -j$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu) && \
     make install && \
