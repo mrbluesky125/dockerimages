@@ -1,6 +1,6 @@
 ARG cuda_version=9.0
 ARG cudnn_version=7
-FROM nvidia/cuda:${cuda_version}-cudnn${cudnn_version}-devel-ubuntu18.04
+FROM nvidia/cuda:${cuda_version}-cudnn${cudnn_version}-devel-ubuntu16.04
 
 MAINTAINER Timo Zimmermann <zimmermann.emb@googlemail.com>
 
