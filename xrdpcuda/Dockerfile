@@ -1,4 +1,4 @@
-ARG cuda_version=10.0
+ARG cuda_version=9.0
 ARG cudnn_version=7
 FROM nvidia/cuda:${cuda_version}-cudnn${cudnn_version}-devel-ubuntu18.04
 
@@ -8,7 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 #Remote desktop XRDP
 RUN apt-get update && \
-    apt-get install -y --force-yes xrdp xvfb xfce4 xfce4-terminal gnome-icon-theme-full tango-icon-theme leafpad evince ristretto vlc chromium-browser && \
+    apt-get install -y --force-yes xrdp xvfb xfce4 xfce4-terminal tango-icon-theme leafpad evince ristretto vlc chromium-browser && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* && \
     sed -i '/TerminalServerUsers/d' /etc/xrdp/sesman.ini && \
     sed -i '/TerminalServerAdmins/d' /etc/xrdp/sesman.ini && \
