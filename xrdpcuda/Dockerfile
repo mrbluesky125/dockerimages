@@ -1,4 +1,6 @@
-FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
+ARG cuda_version=10.0
+ARG cudnn_version=7
+FROM nvidia/cuda:${cuda_version}-cudnn${cudnn_version}-devel-ubuntu18.04
 
 MAINTAINER Timo Zimmermann <zimmermann.emb@googlemail.com>
 
