@@ -15,9 +15,8 @@ RUN apt-get update && \
     sed -i 's/KillDisconnected=0/KillDisconnected=1/g' /etc/xrdp/sesman.ini && \
     sed -i 's/DisconnectedTimeLimit=0/DisconnectedTimeLimit=10/g' /etc/xrdp/sesman.ini && \
     sed -i '/switch_window_key/d' /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml && \
-    rm /etc/xdg/autostart/xscreensaver.desktop && \
-    mkdir /root/Desktop/ && \
-	cp /usr/share/applications/chromium-browser.desktop /root/Desktop/ && \
+    rm /etc/xdg/autostart/xscreensaver.desktop && mkdir /root/Desktop/ && \
+    cp /usr/share/applications/chromium-browser.desktop /root/Desktop/ && \
     xrdp-keygen xrdp auto
 
 RUN echo xfce4-session >~/.xsession
@@ -37,8 +36,6 @@ ADD supervisor.conf /etc/supervisor/conf.d/supervisor.conf
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
 RUN echo 'export PYTHONPATH='$PYTHONPATH\ >> /etc/bash.bashrc
-
-VOLUME ["/root/workspace"]
 
 EXPOSE 3389
 EXPOSE 22
