@@ -2,6 +2,7 @@ FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND noninteractive
 
+#build prerequesits
 RUN apt-get update && apt-get upgrade -y --force-yes && \
     apt-get install -y build-essential git python perl && \
     apt-get install -y '^libxcb.*-dev' libxcb-xinerama0-dev libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev && \
@@ -11,5 +12,11 @@ RUN apt-get update && apt-get upgrade -y --force-yes && \
     apt-get install -y locate && \
     apt-get install -y libpq-dev libprotobuf-dev postgresql && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
+
+#python3/aws stuff
+RUN apt-get update && \
+    apt-get install -y --force-yes python3 python3-pip && \
+    apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* && \
+    pip3 install boto3
 
 WORKDIR /root
