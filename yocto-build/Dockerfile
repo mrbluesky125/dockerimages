@@ -1,0 +1,48 @@
+FROM ubuntu:16.04
+ARG VERSIONYOCTO=3.0
+ARG VERSIONPOKY=poky-zeus-22.0.0
+
+RUN apt-get update && apt-get install -y bzip2 gawk wget git-core diffstat unzip texinfo gcc-multilib g++-5-multilib \
+     build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
+     xz-utils debianutils iputils-ping libsdl1.2-dev xterm htop locales tzdata screen libgtk2.0-dev libncurses5-dev autoconf libtool libglib2.0-dev
+
+# create user for bitbake
+RUN useradd -ms /bin/bash bitbake
+
+# reconfigure locales
+RUN echo "Europe/Berlin" > /etc/timezone && \
+     dpkg-reconfigure -f noninteractive tzdata && \
+     sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+     echo 'LANG="en_US.UTF-8"'>/etc/default/locale && \
+     dpkg-reconfigure --frontend=noninteractive locales && \
+     update-locale LANG=en_US.UTF-8
+
+# setlocales
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
+
+# Pull yocto
+WORKDIR /tmp
+RUN wget http://downloads.yoctoproject.org/releases/yocto/yocto-${VERSIONYOCTO}/${VERSIONPOKY}.tar.bz2
+RUN mkdir $PWD/poky
+RUN mkdir $PWD/temp
+RUN tar -xjf ${VERSIONPOKY}.tar.bz2 -C $PWD/temp
+RUN rsync -vua --delete-after $PWD/temp/${VERSIONPOKY}/ /home/bitbake/yocto
+RUN mkdir /home/bitbake/yocto/build
+RUN rm $PWD/${VERSIONPOKY}.tar.bz2
+
+# Fix owner
+RUN chown -R bitbake:bitbake /home/bitbake/
+
+# Fast installs
+
+#
+
+# Install scripts
+RUN mkdir /scripts
+ADD ./*.sh /scripts/
+RUN chmod 777 /scripts/*
+
+WORKDIR /home/bitbake/yocto
+CMD [ "/bin/sh", "/scripts/init.sh" ]
