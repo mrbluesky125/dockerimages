@@ -1,5 +1,6 @@
 FROM ubuntu:16.04
 ARG VERSIONYOCTO=3.0
+ARG VERSIONNAME=zeus
 ARG VERSIONPOKY=poky-zeus-22.0.0
 
 RUN apt-get update && apt-get install -y bzip2 gawk wget git-core diffstat unzip texinfo gcc-multilib g++-5-multilib \
@@ -35,13 +36,9 @@ RUN rm $PWD/${VERSIONPOKY}.tar.bz2
 # Fix owner
 RUN chown -R bitbake:bitbake /home/bitbake/
 
-# Fast installs
-
-#
-
 # Install scripts
 RUN mkdir /scripts
-ADD ./*.sh /scripts/
+ADD ./scripts/*.sh /scripts/
 RUN chmod 777 /scripts/*
 
 WORKDIR /home/bitbake/yocto

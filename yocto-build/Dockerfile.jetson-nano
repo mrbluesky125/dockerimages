@@ -1,0 +1,17 @@
+FROM mrbluesky125/yocto-build
+
+#clone meta layers for jetson nano
+RUN mkdir /home/bitbake/yocto/meta-custom
+RUN cd /home/bitbake/yocto/meta-custom && \
+	git clone -b ${VERSIONNAME} https://github.com/meta-qt5/meta-qt5.git && \
+	git clone -b ${VERSIONNAME} git://git.openembedded.org/meta-openembedded $$ \
+	git clone -b ${VERSIONNAME}-14t-r32.3.1 https://github.com/madisongh/meta-tegra && \
+	git clone -b ${VERSIONNAME} git://git.yoctoproject.org/meta-security && \
+	git clone -b ${VERSIONNAME} https://github.com/mrbluesky125/meta-tegradevboard.git
+
+# Install scripts
+RUN mkdir -p /home/bitbake/yocto/build/conf
+ADD ./conf/*.conf /home/bitbake/yocto/build/conf/
+
+WORKDIR /home/bitbake/yocto
+CMD [ "/bin/sh", "/scripts/init.sh" ]
