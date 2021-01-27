@@ -6,17 +6,23 @@ ENV DEBIAN_FRONTEND noninteractive
 
 #Anaconda
 RUN echo 'export PATH=/opt/conda/bin:$PATH' > /etc/profile.d/conda.sh && \
-    wget --quiet https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh -O ~/anaconda.sh && \
+    wget --quiet https://repo.continuum.io/archive/Anaconda3-2019.07-Linux-x86_64.sh -O ~/anaconda.sh && \
     /bin/bash ~/anaconda.sh -b -p /opt/conda && \
     rm ~/anaconda.sh
 ENV PATH /opt/conda/bin:$PATH
 
 #PIP Python
-RUN pip install --upgrade pip  && \  
-    pip install tqdm && \
-    pip install lmdb && \
-    pip install tensorflow-gpu && \
-    pip install keras
+RUN pip install --upgrade pip  
+#    pip install tqdm && \
+#    pip install lmdb && \
+#    pip install tensorflow-gpu && \
+#    pip install keras
+
+#Conda Python Packages
+RUN conda update conda  && \
+    conda install tqdm && \
+    conda install tensorflow-gpu && \
+    conda install keras
 
 #add ENV variables to .bashrc for remote logins
 RUN sed -i '/export /d' /etc/bash.bashrc
