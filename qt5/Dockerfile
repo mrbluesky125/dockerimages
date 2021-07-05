@@ -22,7 +22,7 @@ RUN apt-get update && apt-get upgrade -y --force-yes && \
     apt-get autoclean && apt-get autoremove && rm -rf /var/lib/apt/lists/* 
 
 RUN cd opt && git clone https://code.qt.io/qt/qt5.git && \
-    cd qt5 && git checkout tags/v${qt_version} && \ 
+    cd qt5 && git checkout tags/v$qt_version && \ 
     ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine && \
     ./configure -opensource -confirm-license -nomake examples -nomake tests --silent && \
     make -j$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu) && make install && \
@@ -32,10 +32,10 @@ RUN cd opt && git clone https://code.qt.io/qt/qt5.git && \
 RUN locale-gen en_US.UTF-8 && locale -a
 
 ENV QT_WEBGL_WEBSOCKETSERVER ws://0.0.0.0:8081
-ENV PATH /usr/local/Qt-${qt_version}/bin:$PATH
-ENV LD_LIBRARY_PATH /usr/local/Qt-${qt_version}/lib:$LD_LIBRARY_PATH
+ENV PATH /usr/local/Qt-$qt_version/bin:$PATH
+ENV LD_LIBRARY_PATH /usr/local/Qt-$qt_version/lib:$LD_LIBRARY_PATH
 
-RUN echo 'export QT_VERSION='{qt_version} >> /etc/bash.bashrc
+RUN echo 'export QT_VERSION='$qt_version >> /etc/bash.bashrc
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
 
