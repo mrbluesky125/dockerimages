@@ -2,7 +2,7 @@ ARG cuda_version=11.0
 ARG cudnn_version=8
 ARG cuda_package=runtime
 ARG ubuntu_version=18.04
-ENV qt_version=5.15.1
+ENV qt_version 5.15.1
 
 FROM nvidia/cuda:${cuda_version}-cudnn${cudnn_version}-${cuda_package}-ubuntu${ubuntu_version}
 
