@@ -2,12 +2,11 @@ ARG cuda_version=11.0
 ARG cudnn_version=8
 ARG cuda_package=runtime
 ARG ubuntu_version=18.04
-ARG qt_version=5.15.1
+ENV qt_version=5.15.1
 
 FROM nvidia/cuda:${cuda_version}-cudnn${cudnn_version}-${cuda_package}-ubuntu${ubuntu_version}
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV QT_VERSION_TAG 5.15.1
 
 RUN apt-get update && apt-get upgrade -y --force-yes && \
     apt-get install -y build-essential cmake git python python3 python3-dev perl locate wget && \
