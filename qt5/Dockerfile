@@ -1,6 +1,6 @@
 ARG ubuntu_version=18.04
 
-FROM ubuntu/ubuntu:${ubuntu_version}
+FROM ubuntu:${ubuntu_version}
 
 ENV qt_version 5.15.1
 ENV DEBIAN_FRONTEND noninteractive
