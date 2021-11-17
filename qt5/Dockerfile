@@ -9,7 +9,7 @@ ENV qt_version 5.15.1
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get upgrade -y --force-yes && \
-    apt-get install -y build-essential cmake git python python3 python3-dev perl locate wget && \
+    apt-get install -y build-essential cmake git python python3 python3-dev perl locate wget checkinstall && \
     apt-get install -y '^libxcb.*-dev' libxcb-xinerama0-dev libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev && \
     apt-get install -y flex bison gperf libicu-dev libxslt-dev ruby && \
     apt-get install -y libssl-dev libxcursor-dev libxcomposite-dev libxdamage-dev libxrandr-dev libdbus-1-dev libfontconfig1-dev libcap-dev libxtst-dev libpulse-dev libudev-dev libpci-dev libnss3-dev libasound2-dev libxss-dev libegl1-mesa-dev gperf bison && \
@@ -22,7 +22,7 @@ RUN apt-get update && apt-get upgrade -y --force-yes && \
 
 RUN cd opt && git clone https://code.qt.io/qt/qt5.git && \
     cd qt5 && git checkout tags/v$qt_version && \ 
-    ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine && \
+    ./init-repository --module-subset=default,-qtwebkit,-qtwebkit-examples,-qtwebengine,-qtwebview,-qtwebchannel && \
     ./configure -opensource -confirm-license -nomake examples -nomake tests --silent && \
     make -j$(grep -c ^processor /proc/cpuinfo 2>/dev/null || sysctl -n hw.ncpu) && make install && \
     git submodule foreach --recursive "git clean -dfx" && git clean -dfx && \
@@ -30,15 +30,11 @@ RUN cd opt && git clone https://code.qt.io/qt/qt5.git && \
 
 RUN locale-gen en_US.UTF-8 && locale -a
 
-ENV QT_WEBGL_WEBSOCKETSERVER ws://0.0.0.0:8081
 ENV PATH /usr/local/Qt-$qt_version/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/Qt-$qt_version/lib:$LD_LIBRARY_PATH
 
 RUN echo 'export QT_VERSION='$qt_version >> /etc/bash.bashrc
 RUN echo 'export PATH='$PATH >> /etc/bash.bashrc
 RUN echo 'export LD_LIBRARY_PATH='$LD_LIBRARY_PATH >> /etc/bash.bashrc
-
-#Connect port
-EXPOSE 8080
 
 WORKDIR /root
